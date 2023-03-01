@@ -9,7 +9,14 @@ const productSchema = new mongoose.Schema({
         data: Buffer,
         contentType: String
     },
-    category: String,
+    categorys: [
+        {
+            category: String,
+            species: String,
+            color: String,
+            sex: String,
+        }
+    ],
     seller_id: String
 });
 
