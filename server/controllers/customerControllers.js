@@ -1,21 +1,22 @@
 const Customer = require('../models/customerModel');
+const handlerFactory = require('./handlerFactory');
 
-exports.signup = async(req, res, next) => {
+exports.signup = async (req, res, next) => {
     try {
+        const { firstname, lastname, email,
+            password, phone, dob, address } = handlerFactory.filerObj(req.body,
+                'firstname', 'lastname', 'email', 'password',
+                'phone', 'dob', 'address'
+            );
+
         const customer = await Customer.create({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            password: req.body.password,
-            phone: req.body.phone,
-            dob: req.body.dob,
-            address: {
-                detail: req.body.address.detail,
-                province: req.body.address.province,
-                country: req.body.address.country,
-                city: req.body.address.city,
-                zippost: req.body.address.zippost
-            }
+            firstname,
+            lastname,
+            email,
+            password,
+            phone,
+            dob,
+            address
         });
 
         res.status(201).send({
@@ -27,7 +28,7 @@ exports.signup = async(req, res, next) => {
     }
 };
 
-exports.getAllCustomer = async(req, res, next) => {
+exports.getAllCustomer = async (req, res, next) => {
     try {
 
     } catch (err) {
@@ -35,7 +36,7 @@ exports.getAllCustomer = async(req, res, next) => {
     }
 };
 
-exports.updateCustomerById = async(req, res, next) => {
+exports.updateCustomerById = async (req, res, next) => {
     try {
 
     } catch (err) {
@@ -43,7 +44,7 @@ exports.updateCustomerById = async(req, res, next) => {
     }
 };
 
-exports.deleteCustomerById = async(req, res, next) => {
+exports.deleteCustomerById = async (req, res, next) => {
     try {
 
     } catch (err) {
