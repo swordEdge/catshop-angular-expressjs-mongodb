@@ -4,12 +4,12 @@ const Product = require('../models/productModel');
 const Order = require('../models/orderModel');
 const Admin = require('../models/adminModel');
 
-exports.filerObj = (obj, ...alloweFields) => {
+exports.filterObj = (obj, ...alloweFeilds) => {
     const newObj = {};
 
     Object.keys(obj).forEach(el => {
-        if (alloweFields.includes(el)) newObj[el] = obj[el];
+        if (alloweFeilds.includes(el)) newObj[el] = obj[el];
     });
 
     return newObj;
-}
+};
