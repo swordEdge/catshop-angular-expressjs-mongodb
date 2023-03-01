@@ -1,61 +1,19 @@
 const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
-    firstname: {
-        type: String,
-        require
-    },
-    lastname: {
-        type: String,
-        require
-    },
-    email: {
-        type: String,
-        require
-    },
-    phone: {
-        type: String,
-        require
-    },
-    dob: {
-        type: Date,
-        require
-    },
+    firstname: String, 
+    lastname: String, 
+    email: { type: String, unique },
+    password: String, 
+    phone: String, 
+    dob: Date, 
     address: {
-        province: {
-            type: String,
-            require
-        },
-        country: {
-            type: String,
-            require
-        },
-        city: {
-            type: String,
-            require
-        },
-        zippost: {
-            type: String,
-            require
-        },
-    },
-    saler: [],
-    customer_image: {
-        type: String,
-        require
-    },
-    username: {
-        type: String,
-        require
-    },
-    password: {
-        type: String,
-        require
+        detail: String,
+        province: String,
+        country: String,
+        city: String,
+        zippost: String,
     }
-
-    
-
 });
 
 module.exports = mongoose.model('Customer', customerSchema);
-

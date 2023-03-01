@@ -1,27 +1,21 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    sale_id: {
-        type: String,
-        require
+    customer_id: String,
+    order_date: Date,
+    order_status: String,
+    items: [
+        {
+            product_id: String,
+            quantity: Number
+        }
+    ],
+    payments: {
+        payment_date: Date,
+        payment_status: String
     },
-    order_date: {
-        type: Date,
-        require
-    },
-    quantity_purchase: {
-        type: Number,
-        require
-    },
-    price: {
-        type: Number,
-        require
-    },
-    total: {
-        type: Number,
-        require
-    }
+    price: Number,
+    total_price: Number
 });
 
 module.exports = mongoose.model('Order', orderSchema);
-
