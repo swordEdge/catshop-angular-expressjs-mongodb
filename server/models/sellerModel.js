@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const salerSchema = new mongoose.Schema({
+const sellerSchema = new mongoose.Schema({
     customer_id: String,
     store_email: String,
     username: { type: String, unique },
@@ -18,4 +18,4 @@ const salerSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Saler', salerSchema);
+module.exports = mongoose.model('Seller', sellerSchema);
