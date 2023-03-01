@@ -1,6 +1,6 @@
 const Customer = require('../models/customerModel');
 
-exports.getAllCustomer = async(req, res, next) => {
+exports.checkLogin = async(req, res, next) => {
     try {
 
     } catch (err) {
@@ -8,7 +8,7 @@ exports.getAllCustomer = async(req, res, next) => {
     }
 };
 
-exports.updateCustomerById = async(req, res, next) => {
+exports.login = async(req, res, next) => {
     try {
 
     } catch (err) {
@@ -16,7 +16,15 @@ exports.updateCustomerById = async(req, res, next) => {
     }
 };
 
-exports.deleteCustomerById = async(req, res, next) => {
+exports.signup = async(req, res, next) => {
+    try {
+
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+exports.logout = async(req, res, next) => {
     try {
 
     } catch (err) {
