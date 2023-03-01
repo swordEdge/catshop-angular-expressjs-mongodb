@@ -1,9 +1,8 @@
+const Order = require('../models/orderModel');
 const Customer = require('../models/customerModel');
-const Seller = require('../models/sellerModel');
-const Admin = require('../models/adminModel');
+const Product = require('../models/productModel');
 
-// Customer
-exports.checkLogin = async(req, res, next) => {
+exports.getAllOrders = async(req, res, next) => {
     try {
 
     } catch (err) {
@@ -11,7 +10,7 @@ exports.checkLogin = async(req, res, next) => {
     }
 };
 
-exports.login = async(req, res, next) => {
+exports.getOrderById = async(req, res, next) => {
     try {
 
     } catch (err) {
@@ -19,7 +18,7 @@ exports.login = async(req, res, next) => {
     }
 };
 
-exports.signup = async(req, res, next) => {
+exports.getOrderByCondition = async(req, res, next) => {
     try {
 
     } catch (err) {
@@ -27,7 +26,7 @@ exports.signup = async(req, res, next) => {
     }
 };
 
-exports.logout = async(req, res, next) => {
+exports.updateOrderById = async(req, res, next) => {
     try {
 
     } catch (err) {
@@ -35,8 +34,7 @@ exports.logout = async(req, res, next) => {
     }
 };
 
-// Seller
-exports.signupSeller = async(req, res, next) => {
+exports.createOrder = async(req, res, next) => {
     try {
 
     } catch (err) {
@@ -44,8 +42,7 @@ exports.signupSeller = async(req, res, next) => {
     }
 };
 
-// Admin
-exports.loginAdmin = async(req, res, next) => {
+exports.deleteOrderById = async(req, res, next) => {
     try {
 
     } catch (err) {
