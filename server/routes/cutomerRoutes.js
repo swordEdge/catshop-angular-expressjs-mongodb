@@ -1,5 +1,6 @@
 const express = require('express');
 const customerControllers = require('../controllers/customerControllers');
+const authControllers = require('../controllers/authControllers');
 
 const router = express.Router();
 
@@ -8,12 +9,20 @@ router
     .post(customerControllers.signup);
 
 router
+    .route('/login')
+    .post(authControllers.login);
+
+router
+    .route('/logout')
+    .post(authControllers.auth, authControllers.logout);
+
+router
     .route('/:id')
-    .put(customerControllers.updateCustomerById)
-    .delete(customerControllers.deleteCustomerById);
+    .put(authControllers.auth, customerControllers.updateCustomerById)
+    .delete(authControllers.auth, customerControllers.deleteCustomerById);
 
 router
     .route('/')
-    .get(customerControllers.getAllCustomer);
+    .get(authControllers.auth, customerControllers.getAllCustomer);
 
 module.exports = router;

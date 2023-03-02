@@ -24,10 +24,10 @@ customerSchema.pre('save', async function(next) {
 });
 
 customerSchema.statics.login = async function(email, password) {
-    const customer = await  this.fineOne({ email }).select("+password");
+    const customer = await  this.findOne({ email }).select("+password");
 
     if (customer) {
-        const auth = await bcrypt.compare(password, user.password);
+        const auth = await bcrypt.compare(password, customer.password);
 
         if (auth) {
             return customer;
