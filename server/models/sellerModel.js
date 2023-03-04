@@ -12,10 +12,8 @@ const sellerSchema = new mongoose.Schema({
         country: String,
     },
     store_name: String,
-    store_image: {
-        data: Buffer,
-        contentType: String
-    }
+    store_image: String,
+    products: []
 });
 
 module.exports = mongoose.model('Seller', sellerSchema);

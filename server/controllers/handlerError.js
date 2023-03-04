@@ -41,3 +41,28 @@ exports.auth = (err, res) => {
         error: msg
     });
 }
+
+exports.product = (err, res) => {
+    let msg = '';
+    let code = 400;
+
+    if (err.reason) {
+        msg = 'Not found this product🥺';
+    }
+
+    if (err.message === 'Invalid request') {
+        msg = 'Invalid request';
+    }
+
+    if (err.message === 'Seller not found.') {
+        msg = 'Seller not found.';
+    }
+
+    if (msg === '') {
+        msg = 'Something went wrong';
+    }
+
+    res.status(code).send({
+        error: msg
+    });
+}
