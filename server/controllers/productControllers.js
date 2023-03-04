@@ -100,9 +100,6 @@ exports.createProduct = async(req, res, next) => {
 
         await product.save();
 
-        seller.products.push(product);
-        await seller.save();
-
         res.status(201).json({
             status: 'success'
         })

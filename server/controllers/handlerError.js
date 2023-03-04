@@ -66,3 +66,25 @@ exports.product = (err, res) => {
         error: msg
     });
 }
+
+exports.seller = (err, res) => {
+    let msg = '';
+    let code = 400;
+    console.log(err);
+
+    if (err.reason) {
+        msg = 'Not found this seller🥺';
+    }
+
+    if (err.code === 11000) {
+        msg = 'Sell has exist';
+    }
+
+    if (msg === '') {
+        msg = 'Something went wrong';
+    }
+
+    res.status(code).send({
+        error: msg
+    });
+}
