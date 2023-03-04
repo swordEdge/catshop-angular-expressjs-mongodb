@@ -87,4 +87,19 @@ exports.seller = (err, res) => {
     res.status(code).send({
         error: msg
     });
-}
+};
+
+exports.order = (err, res) => {
+    let msg = '';
+    let code = 400;
+    
+    console.log(err);
+
+    if (msg === '') {
+        msg = 'Something went wrong';
+    }
+
+    res.status(code).send({
+        error: msg
+    });
+};

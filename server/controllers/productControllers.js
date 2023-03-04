@@ -64,7 +64,7 @@ exports.updateProductById = async(req, res, next) => {
         const { id } = req.params;
         const { name, description, price, quantity, image, categorys } = req.body;
 
-        const newProuduct = await Product.upadateOne({ _id: id }, {
+        const newProuduct = await Product.updateOne({ _id: id }, {
             name,
             description,
             price,
