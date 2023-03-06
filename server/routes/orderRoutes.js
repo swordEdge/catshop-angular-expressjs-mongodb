@@ -17,4 +17,12 @@ router
     .get(authController.auth, orderControllers.getOrderById)
     .delete(authController.auth, orderControllers.deleteOrderById)
 
+router
+    .route('/seller/:id')
+    .get(authController.auth, orderControllers.getOrderBySellerId);
+
+router
+    .route('/customer/:id')
+    .get(authController.auth, orderControllers.getOrderByCustomerId);
+
 module.exports = router;

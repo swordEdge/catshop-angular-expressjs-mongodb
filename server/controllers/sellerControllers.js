@@ -23,6 +23,10 @@ exports.createSeller = async(req, res, next) => {
 
         const customer = await Customer.findById({ _id: customer_id });
 
+        // 1 Customer can have 1 Seller
+        const sellerCheck = await Seller.find({ customer_id });
+        if (sellerCheck.length === 1) throw Error('Customer can have 1 seller.');
+
         const newSeller = await Seller.create({
             customer_id,
             store_email,

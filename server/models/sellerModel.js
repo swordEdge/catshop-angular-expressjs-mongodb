@@ -9,7 +9,7 @@ const sellerSchema = new mongoose.Schema({
         province: String,
         country: String,
     },
-    store_name: String,
+    store_name: { type: String, unique: true },
     store_image: String,
 });
 

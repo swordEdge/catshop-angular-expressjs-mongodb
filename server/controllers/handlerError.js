@@ -45,16 +45,17 @@ exports.auth = (err, res) => {
 exports.product = (err, res) => {
     let msg = '';
     let code = 400;
+    console.log(err);
 
     if (err.reason) {
         msg = 'Not found this product🥺';
     }
 
-    if (err.message === 'Invalid request') {
+    if (err === 'Invalid request') {
         msg = 'Invalid request';
     }
 
-    if (err.message === 'Seller not found.') {
+    if (err === 'Seller not found.') {
         msg = 'Seller not found.';
     }
 
@@ -76,6 +77,10 @@ exports.seller = (err, res) => {
         msg = 'Not found this seller🥺';
     }
 
+    if (err.message === 'Customer can have 1 seller.') {
+        msg = 'Customer can have 1 seller.';
+    }
+
     if (err.code === 11000) {
         msg = 'Sell has exist';
     }
@@ -94,6 +99,10 @@ exports.order = (err, res) => {
     let code = 400;
     
     console.log(err);
+
+    if (err.message === 'Not found seller.') {
+        msg = 'Not found seller.';
+    }
 
     if (msg === '') {
         msg = 'Something went wrong';

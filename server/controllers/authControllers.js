@@ -46,6 +46,8 @@ exports.login = async(req, res, next) => {
 
 exports.logout = async(req, res, next) => {
     try {
+        req.headers.authorization = '';
+        
         res.status(204).send();
     } catch (err) {
         handlerError.auth(err, res);
