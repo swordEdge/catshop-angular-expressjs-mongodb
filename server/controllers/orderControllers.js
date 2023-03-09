@@ -148,12 +148,9 @@ exports.getOrderBySellerId = async(req, res, next) => {
 
 exports.createOrder = async(req, res, next) => {
     try {
-        const { customer_id, order_date, order_status, items,
-            payments } = handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_date', 'order_status', 
+        const { customer_id, order_status, items,
+            payments } = handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_status', 
             'items', 'payments');
-
-        handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_date', 'order_status', 
-        'items', 'payments');
 
         items.map(p => handlerFactory.checkStringNumber(p.quantity, 'Quantity'));
 
@@ -169,9 +166,11 @@ exports.createOrder = async(req, res, next) => {
             total_price += Number(product.price);
         }
 
+        const order_date = new Date(Date.now()).toISOString();
+
         const newOrder = await Order.create({
             customer_id,
-            order_date, // change formatt later..
+            order_date, 
             order_status,
             items,
             payments, 

@@ -8,13 +8,15 @@ exports.signup = async (req, res, next) => {
             'firstname', 'lastname', 'email', 'password', 'phone', 'dob', 'address'
             );
 
+        const dob_formatt = new Date(dob).toISOString();
+
         const customer = await Customer.create({
             firstname,
             lastname,
             email,
             password,
             phone,
-            dob,
+            dob: dob_formatt,
             address
         });
 
