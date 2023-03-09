@@ -2,7 +2,8 @@ const Order = require('../models/orderModel');
 const Product = require('../models/productModel');
 const Seller = require('../models/sellerModel');
 
-const handlerError = require('./handlerError');
+const handlerError = require('../helpers/handlerError');
+const handlerFactory = require('../helpers/handlerFactory');
 
 exports.getAllOrders = async(req, res, next) => {
     try {
@@ -19,7 +20,7 @@ exports.getAllOrders = async(req, res, next) => {
 
 exports.getOrderById = async(req, res, next) => {
     try {
-        const { id } = req.params;
+        const { id } = handlerFactory.checkEmptyReq(req.params, 'id');
 
         const order = await Order.findById({ _id: id });
 
@@ -34,7 +35,7 @@ exports.getOrderById = async(req, res, next) => {
 
 exports.getOrderByCustomerId = async(req, res, next) => {
     try {
-        const { id } = req.params;
+        const { id } = handlerFactory.checkEmptyReq(req.params, 'id');
 
         const orders = await Order.find({ customer_id: id });
 
@@ -85,7 +86,7 @@ exports.getOrderByCustomerId = async(req, res, next) => {
 
 exports.getOrderBySellerId = async(req, res, next) => {
     try {
-        const { id } = req.params;
+        const { id } = handlerFactory.checkEmptyReq(req.params, 'id');
 
         // Check seller
         const seller = await Seller.findOne({ _id: id });
@@ -148,16 +149,13 @@ exports.getOrderBySellerId = async(req, res, next) => {
 exports.createOrder = async(req, res, next) => {
     try {
         const { customer_id, order_date, order_status, items,
-            payments, price } = req.body;
+            payments } = handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_date', 'order_status', 
+            'items', 'payments');
 
-        if (!customer_id || customer_id === '' ||
-            !order_date || order_date === '' ||
-            !order_status || order_date === '' ||
-            !items || items.length === 0 ||
-            !payments || payments.length <= 1 ||
-            !price || price === '') {
-                throw Error();
-        }
+        handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_date', 'order_status', 
+        'items', 'payments');
+
+        items.map(p => handlerFactory.checkStringNumber(p.quantity, 'Quantity'));
 
         const products_ids = [];
         items.map(p => products_ids.push(p.product_id));
@@ -165,7 +163,6 @@ exports.createOrder = async(req, res, next) => {
         // Calculate total price
         let total_price = 0;
         for (let id of products_ids) {
-            console.log(id)
             const product = await Product
                 .findById({ _id: id })
                 .select('price');
@@ -178,7 +175,6 @@ exports.createOrder = async(req, res, next) => {
             order_status,
             items,
             payments, 
-            price,
             total_price
         });
 
@@ -198,7 +194,9 @@ exports.createOrder = async(req, res, next) => {
 
 exports.deleteOrderById = async(req, res, next) => {
     try {
-        const { id } = req.params;
+        const { id } = handlerFactory.checkEmptyReq(req.params, 'id');
+
+        handlerFactory.checkEmptyReq(req.params);
 
         await Order.deleteOne({ _id: id });
 

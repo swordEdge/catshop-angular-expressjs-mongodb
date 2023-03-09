@@ -1,7 +1,8 @@
 const Product = require('../models/productModel');
 const Seller = require('../models/sellerModel');
 
-const handlerError = require('./handlerError');
+const handlerError = require('../helpers/handlerError');
+const handlerFactory = require('../helpers/handlerFactory');
 
 exports.getAllProducts = async(req, res, next) => {
     try {
@@ -18,7 +19,9 @@ exports.getAllProducts = async(req, res, next) => {
 
 exports.getProductById = async(req, res, next) => {
     try {
-        const product = await Product.findById({ _id: req.body.id });
+        const { id } = req.params;
+
+        const product = await Product.findById({ _id: id });
 
         res.status(200).send({
             status: 'success',
@@ -42,6 +45,8 @@ exports.getProductByName = async(req, res, next) => {
             ]
         });
 
+        if (products.length === 0) throw Error('Not found products🥺');
+
         res.status(200).send({
             status: 'success',
             data: products
@@ -51,18 +56,28 @@ exports.getProductByName = async(req, res, next) => {
     }
 };
 
-// exports.getProductByNameAndCondition = async(req, res, next) => {
-//     try {
+exports.getProductBySellerId = async(req, res, next) => {
+    try {
+        const { id } = req.params;
 
-//     } catch (err) {
-//         console.log(err);
-//     }
-// };
+        const products = await Product.find({ seller_id: id });
+
+        res.status(200).send({
+            status: 'success',
+            data: products
+        });
+    } catch (err) {
+        handlerError.product(err, res);
+    }
+};
 
 exports.updateProductById = async(req, res, next) => {
     try {
         const { id } = req.params;
-        const { name, description, price, quantity, image, categorys } = req.body;
+        const { name, description, price, quantity, image, categorys } = handlerFactory.checkEmptyReq(req.body);
+
+        if (price) handlerFactory.checkStringNumber(price, 'Price');
+        if (quantity) handlerFactory.checkStringNumber(quantity, 'Quantity');
 
         const newProuduct = await Product.updateOne({ _id: id }, {
             name,
@@ -83,7 +98,12 @@ exports.updateProductById = async(req, res, next) => {
 
 exports.createProduct = async(req, res, next) => {
     try {
-        const { name, description, price, quantity, image, categorys, seller_id } = req.body;
+        const { name, description, price, quantity, image, categorys, seller_id } = handlerFactory.checkEmptyReq(req.body,
+            'name', 'description', 'price', 'quantity', 'image', 'categorys', 'seller_id'
+        );
+
+        handlerFactory.checkStringNumber(price, 'Price');
+        handlerFactory.checkStringNumber(quantity, 'Quantity');
 
         const seller = await Seller.findById({ _id: seller_id })
         if (!seller) throw('Seller not found.');

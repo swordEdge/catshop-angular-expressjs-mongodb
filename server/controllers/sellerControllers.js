@@ -1,8 +1,7 @@
 const Seller = require('../models/sellerModel');
-const Customer = require('../models/customerModel');
-const Product = require('../models/productModel');
 
-const handlerError = require('./handlerError');
+const handlerError = require('../helpers/handlerError');
+const handlerFactory = require('../helpers/handlerFactory');
 
 exports.getAllSeller = async(req, res, next) => {
     try {
@@ -19,9 +18,9 @@ exports.getAllSeller = async(req, res, next) => {
 
 exports.createSeller = async(req, res, next) => {
     try {
-        const { customer_id, store_email, username, password, store_phone, address, store_name, store_image } = req.body;
-
-        const customer = await Customer.findById({ _id: customer_id });
+        const { customer_id, store_email, store_phone, address, store_name, store_image } = handlerFactory.checkEmptyReq(req.body,
+            'customer_id', 'store_email', 'store_phone', 'address', 'store_name', 'store_image'
+        );
 
         // 1 Customer can have 1 Seller
         const sellerCheck = await Seller.find({ customer_id });
@@ -46,15 +45,13 @@ exports.createSeller = async(req, res, next) => {
 
 exports.updateSellerById = async(req, res, next) => {
     try {
-        const { customer_id, store_email, username, password, store_phone, address, store_name, store_image } = req.body;
+        const { customer_id, store_email, store_phone, address, store_name, store_image } = handlerFactory.checkEmptyReq(req.body);
 
         const { id } = req.params;
 
         await Seller.updateOne({ _id: id }, {
             customer_id,
             store_email,
-            username,
-            password,
             store_phone,
             address,
             store_name,

@@ -1,10 +1,12 @@
 const Customer = require('../models/customerModel');
-const handlerFactory = require('./handlerFactory');
-const handlerError = require('./handlerError');
+const handlerFactory = require('../helpers/handlerFactory');
+const handlerError = require('../helpers/handlerError');
 
 exports.signup = async (req, res, next) => {
     try {
-        const { firstname, lastname, email, password, phone, dob, address } = req.body
+        const { firstname, lastname, email, password, phone, dob, address } = handlerFactory.checkEmptyReq(req.body,
+            'firstname', 'lastname', 'email', 'password', 'phone', 'dob', 'address'
+            );
 
         const customer = await Customer.create({
             firstname,
@@ -33,13 +35,13 @@ exports.getAllCustomer = async (req, res, next) => {
             data: customers
         })
     } catch (err) {
-        console.log(err);
+        handlerError.customer(err, res);
     }
 };
 
 exports.updateCustomerById = async (req, res, next) => {
     try {
-        const { firstname, lastname, email, password, phone, dob, address } = req.body
+        const { firstname, lastname, email, password, phone, dob, address } = handlerFactory.checkEmptyReq(req.body)
 
         const { id } = req.params
 

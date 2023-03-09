@@ -3,7 +3,7 @@ const Seller = require('../models/sellerModel');
 const Admin = require('../models/adminModel');
 const jwt = require('jsonwebtoken');
 
-const handlerError = require('./handlerError');
+const handlerError = require('../helpers/handlerError');
 
 // Customer
 exports.auth = async(req, res, next) => {
@@ -26,7 +26,7 @@ exports.auth = async(req, res, next) => {
 
 exports.login = async(req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { email, password } = handlerFactory.checkEmptyReq(req.body, 'email', 'password');
 
         const user = await Customer.login(email, password);
 
@@ -51,23 +51,5 @@ exports.logout = async(req, res, next) => {
         res.status(204).send();
     } catch (err) {
         handlerError.auth(err, res);
-    }
-};
-
-// Seller
-exports.signupSeller = async(req, res, next) => {
-    try {
-
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-// Admin
-exports.loginAdmin = async(req, res, next) => {
-    try {
-
-    } catch (err) {
-        console.log(err);
     }
 };

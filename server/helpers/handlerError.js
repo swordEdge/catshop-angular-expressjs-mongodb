@@ -1,5 +1,10 @@
 exports.customer = (err, res) => {
     let msg = '';
+    console.log(err);
+
+    if (err.message === 'Please fill complete body data🥺') {
+        msg = 'Please fill complete body data🥺';
+    }
 
     if (err.code === 11000) {
         msg = 'Email that has already been used.'
@@ -17,6 +22,12 @@ exports.customer = (err, res) => {
 exports.auth = (err, res) => {
     let msg = '';
     let code = 400;
+    console.log(err);
+
+
+    if (err.message === 'Please fill complete body data🥺') {
+        msg = 'Please fill complete body data🥺';
+    }
 
     if (err.message === 'Unauthorized') {
         msg = 'Unauthorized.'
@@ -47,6 +58,22 @@ exports.product = (err, res) => {
     let code = 400;
     console.log(err);
 
+    if (err.message === 'Not found products🥺') {
+        msg = 'Not found products🥺';
+    }
+
+    if (err.message === 'Please fill complete body data🥺') {
+        msg = 'Please fill complete body data🥺';
+    }
+
+    if (err.message === 'Quantity must be integer or positive number') {
+        msg = 'Quantity must be integer or positive number';
+    }
+
+    if (err.message === 'Price must be integer or positive number') {
+        msg = 'Price must be integer or positive number';
+    }
+
     if (err.reason) {
         msg = 'Not found this product🥺';
     }
@@ -73,6 +100,11 @@ exports.seller = (err, res) => {
     let code = 400;
     console.log(err);
 
+
+    if (err.message === 'Please fill complete body data🥺') {
+        msg = 'Please fill complete body data🥺';
+    }
+
     if (err.reason) {
         msg = 'Not found this seller🥺';
     }
@@ -97,8 +129,16 @@ exports.seller = (err, res) => {
 exports.order = (err, res) => {
     let msg = '';
     let code = 400;
-    
     console.log(err);
+
+
+    if (err.message === 'Please fill complete body data🥺') {
+        msg = 'Please fill complete body data🥺';
+    }
+
+    if (err.message === 'Quantity must be integer or positive number') {
+        msg = 'Quantity must be integer or positive number';
+    }
 
     if (err.message === 'Not found seller.') {
         msg = 'Not found seller.';

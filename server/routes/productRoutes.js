@@ -7,20 +7,29 @@ const router = express.Router();
 router
     .route('/')
     .get(productControllers.getAllProducts)
-    
-router
-    .route('/:name')
-    .get(productControllers.getProductByName)
 
 router
     .route('/create')
     .post(authControllers.auth, productControllers.createProduct);
 
 router
-    .route('/:id')
-    .get(productControllers.getProductById)
+    .route('/delete/:id')
     .delete(authControllers.auth, productControllers.deleteProductById)
+
+router
+    .route('/update/:id')
     .put(authControllers.auth, productControllers.updateProductById)
     
+router
+    .route('/search/product_name/:name')
+    .get(productControllers.getProductByName)
+
+router
+    .route('/search/product_id/:id')
+    .get(authControllers.auth, productControllers.getProductById)
+
+router
+    .route('/search/seller/:id')
+    .get(authControllers.auth, productControllers.getProductBySellerId)
 
 module.exports = router;
