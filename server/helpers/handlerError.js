@@ -136,6 +136,10 @@ exports.order = (err, res) => {
         msg = 'Please fill complete body data🥺';
     }
 
+    if (err.message === 'Products quantity are not enough🥹') {
+        msg = 'Products quantity are not enough🥹';
+    }
+
     if (err.message === 'Quantity must be integer or positive number') {
         msg = 'Quantity must be integer or positive number';
     }

@@ -77,7 +77,7 @@ exports.getOrderByCustomerId = async(req, res, next) => {
 
         res.status(200).send({
             status: "success",
-            data: items
+            // data: items
         });
     } catch (err) {
         handlerError.order(err, res);
@@ -153,16 +153,20 @@ exports.createOrder = async(req, res, next) => {
             'items', 'payments');
 
         items.map(p => handlerFactory.checkStringNumber(p.quantity, 'Quantity'));
-
+        
         const products_ids = [];
         items.map(p => products_ids.push(p.product_id));
-
+        console.log(products_ids);
+    
         // Calculate total price
         let total_price = 0;
         for (let id of products_ids) {
             const product = await Product
                 .findById({ _id: id })
-                .select('price');
+                .select('price quantity');
+ 
+            if (product.quantity <= 0) throw Error('Products quantity are not enough🥹');
+
             total_price += Number(product.price);
         }
 
@@ -178,8 +182,8 @@ exports.createOrder = async(req, res, next) => {
         });
 
         for (let { product_id, quantity } of items) {
-            await Product.findOneAndUpdate({ _id: product_id }, {
-                $inc: { quantity: -quantity },
+            await Product.updateOne({ _id: product_id }, {
+                $inc: { quantity: -quantity }
             })
         }
 
