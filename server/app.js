@@ -10,8 +10,10 @@ const orderRoutes = require('./routes/orderRoutes');
 const app = express();
 
 app.use(cors({
-    origin: [''],
+    origin: ['http://localhost:4200'],
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+    exposedHeaders: ['Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization']
     // credentials: true
 }))
 

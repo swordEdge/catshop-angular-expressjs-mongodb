@@ -4,6 +4,7 @@ const Admin = require('../models/adminModel');
 const jwt = require('jsonwebtoken');
 
 const handlerError = require('../helpers/handlerError');
+const handlerFactory = require('../helpers/handlerFactory')
 
 // Customer
 exports.auth = async(req, res, next) => {

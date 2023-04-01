@@ -19,7 +19,8 @@ router
 router
     .route('/:id')
     .put(authControllers.auth, customerControllers.updateCustomerById)
-    .delete(authControllers.auth, customerControllers.deleteCustomerById);
+    .delete(authControllers.auth, customerControllers.deleteCustomerById)
+    .get(authControllers.auth, customerControllers.getCustomerById);
 
 router
     .route('/')

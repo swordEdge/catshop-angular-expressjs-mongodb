@@ -3,6 +3,7 @@ const handlerFactory = require('../helpers/handlerFactory');
 const handlerError = require('../helpers/handlerError');
 
 exports.signup = async (req, res, next) => {
+    console.log(req.body)
     try {
         const { firstname, lastname, email, password, phone, dob, address } = handlerFactory.checkEmptyReq(req.body,
             'firstname', 'lastname', 'email', 'password', 'phone', 'dob', 'address'
@@ -23,6 +24,20 @@ exports.signup = async (req, res, next) => {
         res.status(201).send({
             status: 'success',
         });
+    } catch (err) {
+        handlerError.customer(err, res);
+    }
+};
+
+exports.getCustomerById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const customers = await Customer.findById({ _id: id });
+
+        res.status(200).send({
+            status: 'success',
+            data: customers
+        })
     } catch (err) {
         handlerError.customer(err, res);
     }
