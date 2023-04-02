@@ -58,6 +58,7 @@ exports.getAllCustomer = async (req, res, next) => {
 
 exports.updateCustomerById = async (req, res, next) => {
     try {
+        console.log(req.body)
         const { firstname, lastname, email, password, phone, dob, address } = handlerFactory.checkEmptyReq(req.body)
 
         const { id } = req.params

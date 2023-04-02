@@ -23,14 +23,18 @@ exports.checkEmptyReq = (req, ...alloweFeilds) => {
         if (b === '' || !b) throw Error('Please fill complete body data🥺');
     });
 
-    const newObj = {};
-    alloweFeilds.forEach(el => {
-        if (Object.keys(req).indexOf(el) === -1) {
-            throw Error('Please fill complete body data🥺');
-        } else {
-            newObj[el] = req[el];
-        }
-    })
+    let newObj = {};
+    if (alloweFeilds.length > 0) {
+        alloweFeilds.forEach(el => {
+            if (Object.keys(req).indexOf(el) === -1) {
+                throw Error('Please fill complete body data🥺');
+            } else {
+                newObj[el] = req[el];
+            }
+        })
+    } else {
+        newObj = req;
+    }
 
     return newObj;
 };
