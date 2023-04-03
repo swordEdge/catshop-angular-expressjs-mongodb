@@ -21,7 +21,7 @@ exports.getSellerByCustomerId = async(req, res) => {
         const { cust_id } = req.params;
         
         const seller = await Seller.find({ customer_id: cust_id });
-        if (sellerCheck.length === 0) throw Error('Not found this seller🥺');
+        if (seller.length === 0) throw Error('Not found this seller🥺');
 
         res.status(200).send({
             status: 'success',

@@ -9,11 +9,17 @@ router
     .get(authControllers.auth, sellerControllers.getAllSeller)
 
 router
+    .route('/:cust_id')
+    .get(authControllers.auth, sellerControllers.getSellerByCustomerId)
+
+router
     .route('/create')
     .post(authControllers.auth, sellerControllers.createSeller)
 
 router
     .route('/:id')
     .put(authControllers.auth, sellerControllers.updateSellerById);
+
+
 
 module.exports = router;
