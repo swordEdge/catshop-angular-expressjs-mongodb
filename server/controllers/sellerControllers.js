@@ -16,10 +16,26 @@ exports.getAllSeller = async(req, res, next) => {
     }
 };
 
+exports.getSellerByCustomerId = async(req, res) => {
+    try {
+        const { cust_id } = req.params;
+        
+        const seller = await Seller.find({ customer_id: cust_id });
+        if (sellerCheck.length === 0) throw Error('Not found this seller🥺');
+
+        res.status(200).send({
+            status: 'success',
+            data: seller
+        })
+    } catch (err) {
+        handlerError.seller(err, res);
+    }
+};
+
 exports.createSeller = async(req, res, next) => {
     try {
-        const { customer_id, store_email, store_phone, address, store_name, store_image } = handlerFactory.checkEmptyReq(req.body,
-            'customer_id', 'store_email', 'store_phone', 'address', 'store_name', 'store_image'
+        const { customer_id, store_email, store_phone, store_name, store_image } = handlerFactory.checkEmptyReq(req.body,
+            'customer_id', 'store_email', 'store_phone', 'store_name', 'store_image'
         );
 
         // 1 Customer can have 1 Seller
@@ -30,7 +46,6 @@ exports.createSeller = async(req, res, next) => {
             customer_id,
             store_email,
             store_phone,
-            address,
             store_name,
             store_image
         })
@@ -45,7 +60,7 @@ exports.createSeller = async(req, res, next) => {
 
 exports.updateSellerById = async(req, res, next) => {
     try {
-        const { customer_id, store_email, store_phone, address, store_name, store_image } = handlerFactory.checkEmptyReq(req.body);
+        const { customer_id, store_email, store_phone, store_name, store_image } = handlerFactory.checkEmptyReq(req.body);
 
         const { id } = req.params;
 
@@ -53,7 +68,6 @@ exports.updateSellerById = async(req, res, next) => {
             customer_id,
             store_email,
             store_phone,
-            address,
             store_name,
             store_image
         })

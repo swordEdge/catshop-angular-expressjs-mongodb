@@ -8,13 +8,13 @@ const customerSchema = new mongoose.Schema({
     password: { type: String, select: false }, 
     phone: String, 
     dob: Date, 
-    address: {
-        detail: String,
-        province: String,
-        country: String,
-        city: String,
-        zippost: String,
-    }
+    // address: {
+    //     detail: String,
+    //     province: String,
+    //     country: String,
+    //     city: String,
+    //     zippost: String,
+    // }
 });
 
 customerSchema.pre('save', async function(next) {

@@ -4,11 +4,11 @@ const sellerSchema = new mongoose.Schema({
     customer_id: String,
     store_email: String,
     store_phone: String,
-    address: {
-        detail: String,
-        province: String,
-        country: String,
-    },
+    // address: {
+    //     detail: String,
+    //     province: String,
+    //     country: String,
+    // },
     store_name: { type: String, unique: true },
     store_image: String,
 });

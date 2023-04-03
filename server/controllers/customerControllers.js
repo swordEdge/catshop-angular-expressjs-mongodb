@@ -3,10 +3,9 @@ const handlerFactory = require('../helpers/handlerFactory');
 const handlerError = require('../helpers/handlerError');
 
 exports.signup = async (req, res, next) => {
-    console.log(req.body)
     try {
-        const { firstname, lastname, email, password, phone, dob, address } = handlerFactory.checkEmptyReq(req.body,
-            'firstname', 'lastname', 'email', 'password', 'phone', 'dob', 'address'
+        const { firstname, lastname, email, password, phone, dob } = handlerFactory.checkEmptyReq(req.body,
+            'firstname', 'lastname', 'email', 'password', 'phone', 'dob'
             );
 
         const dob_formatt = new Date(dob).toISOString();
@@ -17,8 +16,7 @@ exports.signup = async (req, res, next) => {
             email,
             password,
             phone,
-            dob: dob_formatt,
-            address
+            dob: dob_formatt
         });
 
         res.status(201).send({
@@ -71,8 +69,7 @@ exports.updateCustomerById = async (req, res, next) => {
             email,
             password,
             phone,
-            dob,
-            address
+            dob
         });
 
         res.status(200).send({

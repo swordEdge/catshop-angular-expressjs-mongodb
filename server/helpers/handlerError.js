@@ -105,6 +105,10 @@ exports.seller = (err, res) => {
         msg = 'Please fill complete body data🥺';
     }
 
+    if (err.message === 'Not found this seller🥺') {
+        msg = 'Not found this seller🥺';
+    }
+
     if (err.reason) {
         msg = 'Not found this seller🥺';
     }
