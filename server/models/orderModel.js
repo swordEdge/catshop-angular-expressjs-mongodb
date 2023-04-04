@@ -10,10 +10,6 @@ const orderSchema = new mongoose.Schema({
             quantity: Number
         }
     ],
-    payments: {
-        payment_date: Date,
-        payment_status: String
-    },
     total_price: Number
 });
 

@@ -18,7 +18,8 @@ router
 
 router
     .route('/:id')
-    .put(authControllers.auth, sellerControllers.updateSellerById);
+    .put(authControllers.auth, sellerControllers.updateSellerById)
+    .delete(authControllers.auth, sellerControllers.deleteSeller);
 
 
 

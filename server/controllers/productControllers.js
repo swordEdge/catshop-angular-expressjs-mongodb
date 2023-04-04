@@ -74,7 +74,7 @@ exports.getProductBySellerId = async(req, res, next) => {
 exports.updateProductById = async(req, res, next) => {
     try {
         const { id } = req.params;
-        const { name, description, price, quantity, image, categorys } = handlerFactory.checkEmptyReq(req.body);
+        const { name, description, price, quantity, image, category } = handlerFactory.checkEmptyReq(req.body);
 
         if (price) handlerFactory.checkStringNumber(price, 'Price');
         if (quantity) handlerFactory.checkStringNumber(quantity, 'Quantity');
@@ -85,7 +85,7 @@ exports.updateProductById = async(req, res, next) => {
             price,
             quantity,
             image,
-            categorys
+            category
         });
 
         res.status(200).send({
@@ -98,7 +98,7 @@ exports.updateProductById = async(req, res, next) => {
 
 exports.createProduct = async(req, res, next) => {
     try {
-        const { name, description, price, quantity, image, categorys, seller_id } = handlerFactory.checkEmptyReq(req.body,
+        const { name, description, price, quantity, image, category, seller_id } = handlerFactory.checkEmptyReq(req.body,
             'name', 'description', 'price', 'quantity', 'image', 'categorys', 'seller_id'
         );
 
@@ -114,7 +114,7 @@ exports.createProduct = async(req, res, next) => {
             price,
             quantity,
             image,
-            categorys,
+            category,
             seller_id
         });
 

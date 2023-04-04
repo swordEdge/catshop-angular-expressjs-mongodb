@@ -148,15 +148,13 @@ exports.getOrderBySellerId = async(req, res, next) => {
 
 exports.createOrder = async(req, res, next) => {
     try {
-        const { customer_id, order_status, items,
-            payments } = handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_status', 
-            'items', 'payments');
+        const { customer_id, order_status, items } = handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_status', 
+            'items');
 
         items.map(p => handlerFactory.checkStringNumber(p.quantity, 'Quantity'));
         
         const products_ids = [];
         items.map(p => products_ids.push(p.product_id));
-        console.log(products_ids);
     
         // Calculate total price
         let total_price = 0;
@@ -177,7 +175,6 @@ exports.createOrder = async(req, res, next) => {
             order_date, 
             order_status,
             items,
-            payments, 
             total_price
         });
 

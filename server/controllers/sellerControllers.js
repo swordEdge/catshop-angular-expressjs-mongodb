@@ -79,3 +79,15 @@ exports.updateSellerById = async(req, res, next) => {
         handlerError.seller(err, res);
     }
 };
+
+exports.deleteSeller = async(req, res) => {
+    try {
+        const { id } = req.params;
+
+        await Seller.deleteOne({ _id: id });
+
+        res.status(204).send();
+    } catch (err) {
+        handlerError.seller(err, res);
+    }
+};
