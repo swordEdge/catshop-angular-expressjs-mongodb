@@ -33,7 +33,8 @@ export class CustomerService {
       email: cust.email,
       password: cust.password,
       phone: cust.phone,
-      dob: cust.birthdate
+      dob: cust.dob,
+      image: cust.image
     };
 
     return this.http.post<ICustomer>(

@@ -4,8 +4,8 @@ const handlerError = require('../helpers/handlerError');
 
 exports.signup = async (req, res, next) => {
     try {
-        const { firstname, lastname, email, password, phone, dob } = handlerFactory.checkEmptyReq(req.body,
-            'firstname', 'lastname', 'email', 'password', 'phone', 'dob'
+        const { firstname, lastname, email, password, phone, dob, image } = handlerFactory.checkEmptyReq(req.body,
+            'firstname', 'lastname', 'email', 'password', 'phone', 'dob', 'image'
             );
 
         const dob_formatt = new Date(dob).toISOString();
@@ -16,7 +16,8 @@ exports.signup = async (req, res, next) => {
             email,
             password,
             phone,
-            dob: dob_formatt
+            dob: dob_formatt,
+            image
         });
 
         res.status(201).send({
@@ -57,7 +58,7 @@ exports.getAllCustomer = async (req, res, next) => {
 exports.updateCustomerById = async (req, res, next) => {
     try {
 
-        const { firstname, lastname, email, password, phone, dob, address } = handlerFactory.checkEmptyReq(req.body)
+        const { firstname, lastname, email, password, phone, dob, image } = handlerFactory.checkEmptyReq(req.body)
 
         const { id } = req.params
 
@@ -69,7 +70,8 @@ exports.updateCustomerById = async (req, res, next) => {
             email,
             password,
             phone,
-            dob
+            dob,
+            image
         });
 
         res.status(200).send({

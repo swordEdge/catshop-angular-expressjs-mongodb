@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+import { ChartModule } from 'primeng/chart';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { AvatarModule } from 'primeng/avatar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +19,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { SellerSignupComponent } from './pages/seller-signup/seller-signup.component';
 import { SellerProfileComponent } from './pages/seller-profile/seller-profile.component';
 import { CustomerEditComponent } from './pages/customer-edit/customer-edit.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +31,7 @@ import { CustomerEditComponent } from './pages/customer-edit/customer-edit.compo
     SellerSignupComponent,
     SellerProfileComponent,
     CustomerEditComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,13 @@ import { CustomerEditComponent } from './pages/customer-edit/customer-edit.compo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastModule,
+    MessagesModule,
+    ChartModule,
+    ConfirmDialogModule,
+    ProgressSpinnerModule,
+    AvatarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

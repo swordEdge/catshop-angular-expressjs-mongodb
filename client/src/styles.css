@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+:root {
+    --color-white-1: #fff;
+    --color-green-1: #98AE9B;
+    --color-grey-1: #B0B0B0;
+    
+    --color-green-2: #F2FDF1;
+    --color-grey-2: #333;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* ---BUTTON--- */
+.button {
+    border: none;
+    border-radius: 50%;
+    padding: 0.8rem 0.1rem;
+}
+
+.button-text-white-1 {
+    color: var(--color-white-1);
+    font-size: 1.2rem;
+}
+
+.button-bg-green-1 {
+    background-color: var(--color-green-1);
+}
+
+/* ---INPUT--- */
+.input-signup {
+    font-size: 1.2rem;
+    font-weight: 500 !important;
+    color: var(--color-grey-1) !important;
+    background-color: var(--color-green-2);
+}
+
+.input-signup::placeholder {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    color: var(--color-grey-1) !important;
+}
+
+[type="date"] {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    color: var(--color-grey-1) !important;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+/* ---BACKGROUND-COLOR--- */
+.bg-gradient-card-1 {
+    background: linear-gradient(177.7deg, #C5D7C6 19.79%, rgba(197, 215, 198, 0) 69.86%);
+}
+
+.bg-gradient-1 {
+    background-image: linear-gradient(to left top, #f5efd1, #f5efd1, #cee8d9, #c5e1de, #c3d9de, #bfd4dc, #bccfda, #bac9d7, #b2c5d7, #a9c1d8, #a1bcd8, #99b8d9);
+}

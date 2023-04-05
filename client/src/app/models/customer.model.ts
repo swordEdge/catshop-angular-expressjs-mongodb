@@ -6,4 +6,5 @@ export interface ICustomer {
     password: string;
     phone: string;
     dob: string;
+    image: string;
 }
