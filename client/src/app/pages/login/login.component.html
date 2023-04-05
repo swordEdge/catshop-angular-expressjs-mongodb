@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div class="bg-gradient-2 vh-100 position-relative">
+
+    <div class="position-absolute top-50 start-50 translate-middle" *ngIf="!showLoad">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+
+    <div class="position-absolute d-flex gap-2 slide-bottom-1" style="left: 50px; top: 50px; cursor: pointer;"
+        (click)="onClickBack()" *ngIf="showLoad">
+        <i class="pi pi-arrow-left m-0 p-0" style="font-size: 2rem; color: var(--color-white-1);"></i>
+        <h3 clas="m-0 p-0" style="color: var(--color-white-1);">Back</h3>
+    </div>
+
+    <div class="position-absolute  translate-middle d-flex flex-column align-items-start slide-bottom-1"
+        style="left: 32rem; top: 40%;" *ngIf="showLoad">
+        <img class="slide-bottom-1 mb-3" src="../../../assets/logo-white.svg" alt="" width="250" height="100" style="pointer-events: none;">
+
+        <form class="form d-flex flex-column gap-3 fw-semibold align-items-start rounded  slide-bottom-1"
+            style="width: 26rem;" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+            <input formControlName="email" type="email" placeholder="email"
+                class="input-signup form-control rounded-pill px-4 py-2 w-100 slide-bottom-1" />
+            <input formControlName="password" type="password" placeholder="password"
+                class="input-signup form-control rounded-pill px-4 py-2 w-100 slide-bottom-1" />
+
+            <button
+                class="button-2 button-text-white-1 w-50 mt-3 button-bg-green-1 fw-semibold position-relative slide-bottom-1 align-self-end">
+                Login
+            </button>
+        </form>
+    </div>
+
+    <div 
+        class="position-absolute d-flex flex-column align-items-start slide-bottom-1"
+        style="right: 6rem; bottom: 0;"
+        *ngIf="showLoad"
+    >
+        <img class="slide-bottom-1" src="../../../assets/cat-login.png" alt="cats" width="800" style="pointer-events: none;">
+    </div>
+</div>
+
+<p-toast></p-toast>
