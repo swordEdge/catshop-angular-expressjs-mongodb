@@ -99,7 +99,7 @@ exports.updateProductById = async(req, res, next) => {
 exports.createProduct = async(req, res, next) => {
     try {
         const { name, description, price, quantity, image, category, seller_id } = handlerFactory.checkEmptyReq(req.body,
-            'name', 'description', 'price', 'quantity', 'image', 'categorys', 'seller_id'
+            'name', 'description', 'price', 'quantity', 'image', 'category', 'seller_id'
         );
 
         handlerFactory.checkStringNumber(price, 'Price');

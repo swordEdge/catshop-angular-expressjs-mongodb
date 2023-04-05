@@ -1,6 +1,5 @@
 exports.customer = (err, res) => {
     let msg = '';
-    console.log(err);
 
     if (err.message === 'Please fill complete body data🥺') {
         msg = 'Please fill complete body data🥺';
@@ -22,8 +21,6 @@ exports.customer = (err, res) => {
 exports.auth = (err, res) => {
     let msg = '';
     let code = 400;
-    console.log(err);
-
 
     if (err.message === 'Please fill complete body data🥺') {
         msg = 'Please fill complete body data🥺';
@@ -56,7 +53,6 @@ exports.auth = (err, res) => {
 exports.product = (err, res) => {
     let msg = '';
     let code = 400;
-    console.log(err);
 
     if (err.message === 'Not found products🥺') {
         msg = 'Not found products🥺';
@@ -98,8 +94,6 @@ exports.product = (err, res) => {
 exports.seller = (err, res) => {
     let msg = '';
     let code = 400;
-    console.log(err);
-
 
     if (err.message === 'Please fill complete body data🥺') {
         msg = 'Please fill complete body data🥺';
@@ -133,8 +127,6 @@ exports.seller = (err, res) => {
 exports.order = (err, res) => {
     let msg = '';
     let code = 400;
-    console.log(err);
-
 
     if (err.message === 'Please fill complete body data🥺') {
         msg = 'Please fill complete body data🥺';
