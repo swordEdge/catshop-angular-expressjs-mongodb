@@ -9,6 +9,7 @@ import { ChartModule } from 'primeng/chart';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { AvatarModule } from 'primeng/avatar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SkeletonModule } from 'primeng/skeleton';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,7 +46,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     ChartModule,
     ConfirmDialogModule,
     ProgressSpinnerModule,
-    AvatarModule
+    AvatarModule,
+    SkeletonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

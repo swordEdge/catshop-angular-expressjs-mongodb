@@ -7,9 +7,20 @@
     --color-white-1: #fff;
     --color-green-1: #98AE9B;
     --color-grey-1: #B0B0B0;
+    --color-blue-1: #1C488B;
+    --color-red-1: #991E16;
+
 
     --color-green-2: #F2FDF1;
     --color-grey-2: #333;
+
+    --color-grey-3: #D9D9D9;
+
+    --color-grey-4: #EDEDED;
+
+    --color-grey-5: #EDE9E1;
+
+    --color-grey-6: #6E6868;
 }
 
 body {
@@ -26,6 +37,12 @@ body {
 .button-2 {
     border: none;
     border-radius: 100px;
+    padding: 3px 2px;
+}
+
+.button-2 {
+    border: none;
+    border-radius: 100px;
     padding: 0.8rem 0.5rem !important;
 }
 
@@ -36,6 +53,14 @@ body {
 
 .button-bg-green-1 {
     background-color: var(--color-green-1);
+}
+
+.button-bg-blue-1 {
+    background-color: var(--color-blue-1);
+}
+
+.button-bg-red-1 {
+    background-color: var(--color-red-1);
 }
 
 /* ---INPUT--- */
@@ -63,6 +88,18 @@ body {
 }
 
 /* ---BACKGROUND-COLOR--- */
+.bg-grey-1 {
+    background-color: var(--color-grey-3);
+}
+
+.bg-grey-4 {
+    background-color: var(--color-grey-4);
+}
+
+.bg-grey-5 {
+    background-color: var(--color-grey-5);
+}
+
 .bg-gradient-card-1 {
     background: linear-gradient(177.7deg, #C5D7C6 19.79%, rgba(197, 215, 198, 0) 69.86%);
 }
@@ -84,6 +121,11 @@ body {
 .slide-in-bottom {
     -webkit-animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-in-fwd-center {
+    -webkit-animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @-webkit-keyframes slide-bottom {
@@ -134,6 +176,34 @@ body {
     100% {
         -webkit-transform: translateY(0);
         transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slide-in-fwd-center {
+    0% {
+        -webkit-transform: translateZ(-1400px);
+        transform: translateZ(-1400px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-fwd-center {
+    0% {
+        -webkit-transform: translateZ(-1400px);
+        transform: translateZ(-1400px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
         opacity: 1;
     }
 }
