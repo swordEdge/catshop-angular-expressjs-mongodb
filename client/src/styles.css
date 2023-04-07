@@ -9,12 +9,17 @@
     --color-grey-1: #B0B0B0;
     --color-blue-1: #1C488B;
     --color-red-1: #991E16;
-
+    --color-brown-1: #A59A8C;
+    --color-pink-1: #F2BDBD;
 
     --color-green-2: #F2FDF1;
     --color-grey-2: #333;
+    --color-blue-2: #104373;
+    --color-brown-2: #48433D;
+    --color-pink-2: #EECED4;
 
     --color-grey-3: #D9D9D9;
+    --color-brown-3: #524A4A;
 
     --color-grey-4: #EDEDED;
 
@@ -87,9 +92,50 @@ body {
     display: none;
 }
 
+/* ---TEXT COLOR--- */
+.text-brown-1 {
+    color: var(--color-brown-1) !important;
+}
+
+.text-pink-1 {
+    color: var(--color-pink-1) !important;
+}
+
+.text-brown-2 {
+    color: var(--color-brown-2) !important;
+}
+
+.text-pink-2 {
+    color: var(--color-pink-2) !important;
+}
+
+.text-brown-3 {
+    color: var(--color-brown-3) !important;
+}
+
 /* ---BACKGROUND-COLOR--- */
+.bg-white-1 {
+    background-color: var(--color-white-1);
+}
+
 .bg-grey-1 {
     background-color: var(--color-grey-3);
+}
+
+.bg-brown-1 {
+    background-color: var(--color-brown-1);
+}
+
+.bg-pink-1 {
+    background-color: var(--color-pink-1);
+}
+
+.bg-brown-2 {
+    background-color: var(--color-brown-2);
+}
+
+.bg-pink-2 {
+    background-color: var(--color-pink-2);
 }
 
 .bg-grey-4 {

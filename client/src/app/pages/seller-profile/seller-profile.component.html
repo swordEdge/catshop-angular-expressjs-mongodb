@@ -1,1 +1,183 @@
-<p>seller-profile works!</p>
+<div class="vh-100 position-relative w-100">
+    <nav class="bg-grey-1">
+        <div class="container d-flex align-items-center justify-content-between py-2">
+            <img class="" style="cursor: pointer;" src="../../../assets/logo-blue.svg" alt="after meow logo" width="150"
+                height="50" />
+
+            <ul class="d-flex align-items-center m-0 gap-5">
+                <li class="list-unstyled">
+                    <i class="pi pi-home" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"
+                        routerLink="/product-show">
+                    </i>
+                </li>
+
+                <li class="list-unstyled">
+                    <i class="pi pi-heart" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
+                </li>
+
+
+                <li class="list-unstyled">
+                    <i class="pi pi-bell position-relative"
+                        style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
+                        <span
+                            class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
+                            style="font-family: 'Inter', sans-serif; font-size: 0.8rem;">
+                            10
+                        </span>
+                    </i>
+                </li>
+
+                <li class="list-unstyled">
+                    <i class="pi pi-shopping-cart position-relative"
+                        style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
+                        <span
+                            class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
+                            style="font-family: 'Inter', sans-serif; font-size: 0.8rem;"
+                        >
+                            15
+                        </span>
+                    </i>
+                </li>
+
+                <li class="list-unstyled">
+                    <i class="pi pi-cog" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div 
+        class="position-absolute top-50 start-50 translate-middle shadow rounded container mx-auto mt-4 p-0 row"
+        *ngIf="!showContent" style="height: 700px;"
+    >
+        <div class="col-3 bg-pink-1 m-0 rounded-start-2 px-5" *ngFor="let sell of seller">
+            <div class="d-flex flex-column gap-5 align-items-center mt-4 justify-content-between">
+                <div class="align-self-star gap-3 d-flex align-items-center">
+                    <p-skeleton shape="circle" size="4.7rem"></p-skeleton>
+
+                    <div class="d-flex flex-column mt-2 gap-3">
+                        <p-skeleton height="1rem" width="7rem" styleClass="mb-1"></p-skeleton>
+                        <p-skeleton height=".5rem" width="4.5rem" styleClass=""></p-skeleton>
+                        <p-skeleton height=".5rem" width="4.5rem" styleClass=""></p-skeleton>
+                    </div>
+                </div>
+
+                <div class="w-100 d-flex flex-column gap-4 text-brown-2">
+                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
+                        <p-skeleton width="5rem"></p-skeleton>
+                        <p-skeleton width="10rem" height="3rem"></p-skeleton>
+                    </div>
+
+                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
+                        <p-skeleton width="5rem"></p-skeleton>
+                        <p-skeleton width="10rem" height="3rem"></p-skeleton>
+                    </div>
+
+                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
+                        <p-skeleton width="5rem"></p-skeleton>
+                        <p-skeleton width="10rem" height="3rem"></p-skeleton>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end flex-column w-100">
+                    <p-skeleton height="3rem" borderRadius="100px" styleClass="w-100"></p-skeleton>
+                </div>
+            </div>
+        </div>
+
+        <div class="col bg-pink-2 m-0 rounded-end-2 p-5 w-50 d-flex flex-column gap-5">
+            <div 
+                class="shadow rounded px-5 py-3 bg-white-1 w-100" 
+            >
+                <p-skeleton height="25rem"></p-skeleton>
+            </div>
+
+            <div class="w-100 d-flex gap-3">
+                <p-skeleton width="15rem" height="3.5rem"></p-skeleton>
+                <p-skeleton width="15rem" height="3.5rem"></p-skeleton>
+            </div>
+        </div>
+    </div>
+
+    <div class="position-absolute top-50 start-50 translate-middle shadow rounded container mx-auto mt-4 p-0 row"
+        *ngIf="showContent" style="height: 700px;">
+        <div class="col-3 bg-pink-1 m-0 rounded-start-2 px-5" *ngFor="let sell of seller">
+            <div class="d-flex flex-column gap-5 align-items-center mt-4 justify-content-between">
+                <div class="align-self-star gap-3 d-flex align-items-center">
+                    <img 
+                        [src]="sell.store_image" 
+                        alt="seller avatar" 
+                        class="rounded-circle slide-bottom-1" 
+                        width="75"
+                        height="75" 
+                        style="pointer-events: none; object-fit: cover;" 
+                    />
+
+                    <div class="d-flex flex-column mt-2 slide-bottom-1">
+                        <div class="h4 m-0 p-0 fw-semibold mb-2 text-brown-2">{{sell.store_name}}</div>
+                        <div class="d-flex gap-2 text-brown-3">
+                            <i class="pi pi-truck m-0 p-0" style="font-size: 1.3rem;"></i>
+                            <p class="m-0 p-0">Bangkok</p> 
+                        </div>
+                        <p class="m-0 p-0 text-brown-3">{{sell.store_email}}</p>
+                    </div>
+                </div>
+
+                <div class="w-100 d-flex flex-column gap-4 slide-bottom-1 text-brown-2">
+                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
+                        <h5 class="m-0 fw-medium">Total Sales</h5>
+                        <h1 class="m-0 fw-medium">5000.00</h1>
+                    </div>
+
+                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
+                        <h5 class="m-0 fw-medium">Orders</h5>
+                        <h1 class="m-0 fw-medium">10</h1>
+                    </div>
+
+                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
+                        <h5 class="m-0 fw-medium">Products</h5>
+                        <h1 class="m-0 fw-medium">{{products.length}}</h1>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end flex-column slide-bottom-1 w-100">
+                    <button 
+                        class="d-flex align-items-center justify-content-center gap-3 button bg-pink-2  fw-semibold w-100 align-self-end slide-bottom-1 px-2 text-brown-2"
+                        routerLink="/customer-profile"
+                    >
+                        <i class="pi pi-arrow-left m-0 p-0" style="font-size: 1.3rem;"></i>
+                        Back to customer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col bg-pink-2 m-0 rounded-end-2 p-5 w-50 d-flex flex-column gap-5">
+            <div 
+                class="shadow rounded px-5 py-3 bg-white-1 w-100" 
+            >
+                <p-chart type="line" [data]="data" [options]="options" class="w-100"></p-chart>
+            </div>
+
+            <div class="w-100 d-flex gap-3">
+                <div 
+                    class="shadow bg-white-1 rounded py-3 px-5 fw-semibold bg-success text-white d-flex gap-2 align-items-center"
+                    style="cursor: pointer;"
+                >   
+                    <i class="pi pi-briefcase m-0 p-0" style="font-size: 1.3rem;"></i>
+                    Store management
+                </div>
+                <div 
+                    class="shadow bg-white-1 rounded py-3 px-5 fw-semibold bg-primary text-white d-flex gap-2 align-items-center"
+                    style="cursor: pointer;"
+                >   
+                    <i class="pi pi-th-large m-0 p-0" style="font-size: 1.3rem;"></i>
+                    Stock management
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<p-toast></p-toast>

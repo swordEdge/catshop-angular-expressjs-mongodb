@@ -6,10 +6,41 @@
 
             <ul class="d-flex align-items-center m-0 gap-5">
                 <li class="list-unstyled">
-                    <a class="text-decoration-none" href="#">test1</a>
+                    <i class="pi pi-home" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"
+                        routerLink="/product-show">
+                    </i>
                 </li>
+
                 <li class="list-unstyled">
-                    <a class="text-decoration-none" href="#">test2</a>
+                    <i class="pi pi-heart" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
+                </li>
+
+
+                <li class="list-unstyled">
+                    <i class="pi pi-bell position-relative"
+                        style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
+                        <span
+                            class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
+                            style="font-family: 'Inter', sans-serif; font-size: 0.8rem;">
+                            10
+                        </span>
+                    </i>
+                </li>
+
+                <li class="list-unstyled">
+                    <i class="pi pi-shopping-cart position-relative"
+                        style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
+                        <span
+                            class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
+                            style="font-family: 'Inter', sans-serif; font-size: 0.8rem;"
+                        >
+                            15
+                        </span>
+                    </i>
+                </li>
+
+                <li class="list-unstyled">
+                    <i class="pi pi-cog" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
                 </li>
             </ul>
         </div>
@@ -19,27 +50,27 @@
         *ngIf="!showContent" style="height: 700px;">
         <div class="col-3 bg-grey-4 m-0 rounded-start-2 px-5" *ngFor="let cust of customer">
             <div class="d-flex flex-column gap-5 align-items-center">
-                <p-skeleton shape="circle" size="9rem" class="mt-5"></p-skeleton>
+                <p-skeleton shape="circle" size="9rem" class="mt-5 slide-bottom-1"></p-skeleton>
 
                 <div class="w-100 d-flex flex-column gap-4">
-                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
-                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
-                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4 slide-bottom-1" borderRadius="100px"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4 slide-bottom-1" borderRadius="100px"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4 slide-bottom-1" borderRadius="100px"></p-skeleton>
                 </div>
             </div>
 
             <div class="d-flex justify-content-end flex-column" style="height: 210px">
-                <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
+                <p-skeleton height="2rem" styleClass="mb-2 py-4 slide-bottom-1" borderRadius="100px"></p-skeleton>
             </div>
         </div>
 
         <div class="col bg-grey-5 rounded-end-2 p-5" *ngFor="let cust of customer">
-            <p-skeleton width="32rem" height="4rem" styleClass="mb-5"></p-skeleton>
+            <p-skeleton width="32rem" height="4rem" styleClass="mb-5 slide-bottom-1"></p-skeleton>
 
             <div class="d-flex flex-column gap-5" style="color: var(--color-grey-6);">
-                <p-skeleton width="30rem" height="1.5rem" ></p-skeleton>
-                <p-skeleton width="8rem" height="1.5rem" ></p-skeleton>
-                <p-skeleton width="15rem" height="1.5rem" ></p-skeleton>
+                <p-skeleton width="30rem" height="1.5rem" styleClass="slide-bottom-1"></p-skeleton>
+                <p-skeleton width="8rem" height="1.5rem" styleClass="slide-bottom-1"></p-skeleton>
+                <p-skeleton width="15rem" height="1.5rem" styleClass="slide-bottom-1"></p-skeleton>
             </div>
         </div>
     </div>
@@ -48,37 +79,31 @@
         *ngIf="showContent" style="height: 700px;">
         <div class="col-3 bg-grey-4 m-0 rounded-start-2 px-5" *ngFor="let cust of customer">
             <div class="d-flex flex-column gap-5 align-items-center">
-                <img [src]="cust.image" alt="customer avatar" class="rounded-circle mt-5 slide-bottom-1" width="150" height="150" style="pointer-events: none;" />
+                <img [src]="cust.image" alt="customer avatar" class="rounded-circle mt-5 slide-bottom-1" width="150"
+                    height="150" style="pointer-events: none;" />
 
                 <div class="w-100 d-flex flex-column gap-4 slide-bottom-1">
-                    <button 
-                        class="button-2 button-bg-blue-1 text-white fw-semibold w-100 slide-bottom-1"
-                        (click)="onClickEdit()"
-                    >
-                        Edit Profile
+                    <button
+                        class="button-2 {{ showEdit ? 'bg-warning' : 'button-bg-blue-1'}} text-white fw-semibold w-100 slide-bottom-1"
+                        (click)="onClickEdit()">
+                        {{showEdit ? 'Cancel' : 'Edit Profile'}}
                     </button>
 
-                    
-                    <button 
-                        class="button-2 button-bg-blue-1 text-white fw-semibold w-100 slide-bottom-1"
-                    >
+
+                    <button class="button-2 button-bg-blue-1 text-white fw-semibold w-100 slide-bottom-1">
                         Order history
                     </button>
 
-                    <button 
-                        class="button-2 button-bg-blue-1 text-white fw-semibold w-100 slide-bottom-1"
-                        routerLink="/seller-profile"
-                    >
+                    <button class="button-2 button-bg-blue-1 text-white fw-semibold w-100 slide-bottom-1"
+                        routerLink="/seller-profile">
                         Seller Profile
                     </button>
                 </div>
             </div>
 
             <div class="d-flex justify-content-end flex-column slide-bottom-1" style="height: 210px">
-                <button 
-                    class="button-2 button-bg-red-1 text-white fw-semibold w-100 align-self-end slide-bottom-1"
-                    (click)="onClickLogout()"
-                >
+                <button class="button-2 button-bg-red-1 text-white fw-semibold w-100 align-self-end slide-bottom-1"
+                    (click)="onClickLogout()">
                     Logout
                 </button>
             </div>
@@ -86,10 +111,11 @@
 
         <div class="col bg-grey-5 m-0 rounded-end-2 p-5" *ngFor="let cust of customer">
             <div class="" *ngIf="!showEdit">
-                <h1 class="fw-medium mb-5 slide-bottom-1" style="color: var(--color-grey-6); font-size: 4rem; letter-spacing: 1.5;">
+                <h1 class="fw-medium mb-5 slide-bottom-1"
+                    style="color: var(--color-grey-6); font-size: 4rem; letter-spacing: 1.5;">
                     {{cust.firstname | uppercase}} {{cust.lastname | uppercase}}
                 </h1>
-    
+
                 <div class="d-flex flex-column gap-4 slide-bottom-1" style="color: var(--color-grey-6);">
                     <h4 class="">email: {{cust.email}}</h4>
                     <h4 class="">phone: {{cust.phone}}</h4>
@@ -98,47 +124,30 @@
             </div>
 
             <div class="slide-bottom-1" *ngIf="showEdit">
-                <h1 class="fw-medium mb-5 slide-bottom-1" style="color: var(--color-grey-6); font-size: 4rem; letter-spacing: 1.5;">
+                <h1 class="fw-medium mb-5 slide-bottom-1"
+                    style="color: var(--color-grey-6); font-size: 4rem; letter-spacing: 1.5;">
                     Edit Profile
                 </h1>
-                <form 
-                    class="d-flex flex-column gap-3 slide-bottom-1"
-                    *ngFor="let cust of customer" 
-                    (ngSubmit)="onSubmitEdit()"
-                >
-          
-                    <input 
-                        type="text"
-                        class="input-signup form-control rounded-pill w-50 slide-bottom-1"
-                        [(ngModel)]="cust.firstname"
-                        [ngModelOptions]="{standalone: true}"
-                        placeholder="firstname"
-                        required
-                    />
-                    <input 
-                        type="text"
-                        class="input-signup form-control rounded-pill w-50 slide-bottom-1"
-                        [(ngModel)]="cust.lastname"
-                        [ngModelOptions]="{standalone: true}"
-                        placeholder="lastname"
-                        required
-                    />
-                    <input 
-                        type="text"
-                        class="input-signup form-control rounded-pill w-50 mb-3 slide-bottom-1"
-                        [(ngModel)]="cust.phone"
-                        [ngModelOptions]="{standalone: true}"
-                        placeholder="phone"
-                        required
-                    />
+                <form class="d-flex flex-column gap-3 slide-bottom-1" *ngFor="let cust of customer"
+                    (ngSubmit)="onSubmitEdit()">
 
-                    <button 
-                        class="button button-bg-green-1 button-text-white-1 align-self-start w-25 slide-bottom-1"
-                        type="sumbit"
-                    >
+                    <input type="text" class="input-signup form-control rounded-pill w-50" [(ngModel)]="cust.firstname"
+                        [ngModelOptions]="{standalone: true}" placeholder="firstname" required />
+                    <input type="text" class="input-signup form-control rounded-pill w-50" [(ngModel)]="cust.lastname"
+                        [ngModelOptions]="{standalone: true}" placeholder="lastname" required />
+                    <input type="text" class="input-signup form-control rounded-pill w-50 mb-3" [(ngModel)]="cust.phone"
+                        [ngModelOptions]="{standalone: true}" placeholder="phone" required />
+
+                    <button class="button button-bg-green-1 button-text-white-1 align-self-start w-25" type="sumbit">
                         Confirm
                     </button>
                 </form>
+            </div>
+
+            <div class="position-absolute d-flex flex-column align-items-start slide-bottom-1"
+                style="right: 6rem; bottom: 0;">
+                <img class="slide-bottom-1" src="../../../assets/cat-login.png" alt="cats" width="500"
+                    style="pointer-events: none;">
             </div>
         </div>
     </div>
