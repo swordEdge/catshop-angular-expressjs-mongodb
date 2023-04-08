@@ -66,9 +66,8 @@ export class CustomerProfileComponent implements OnInit {
     ).pipe(
       take(1)
     ).subscribe({
-      next: (data) => {
-        console.log(data.data)
-        this.customer.push(data.data);
+      next: ({ data }) => {
+        this.customer.push(data);
       },
       error: () => {
         // Unauthorize
@@ -78,6 +77,7 @@ export class CustomerProfileComponent implements OnInit {
   }
 
   onClickLogout() {
+    this.authService.logout();
     this.router.navigateByUrl('/login');
   }
 

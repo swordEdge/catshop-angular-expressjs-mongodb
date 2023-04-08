@@ -27,7 +27,9 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.clear();
+    localStorage.removeItem('token');
+    localStorage.removeItem('cust_id');
+    localStorage.removeItem('sell_id');
   }
 
   login(login: any): Observable<HttpResponse<any>> {

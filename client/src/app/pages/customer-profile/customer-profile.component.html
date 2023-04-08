@@ -50,27 +50,27 @@
         *ngIf="!showContent" style="height: 700px;">
         <div class="col-3 bg-grey-4 m-0 rounded-start-2 px-5" *ngFor="let cust of customer">
             <div class="d-flex flex-column gap-5 align-items-center">
-                <p-skeleton shape="circle" size="9rem" class="mt-5 slide-bottom-1"></p-skeleton>
+                <p-skeleton shape="circle" size="9rem" class="mt-5"></p-skeleton>
 
                 <div class="w-100 d-flex flex-column gap-4">
-                    <p-skeleton height="2rem" styleClass="mb-2 py-4 slide-bottom-1" borderRadius="100px"></p-skeleton>
-                    <p-skeleton height="2rem" styleClass="mb-2 py-4 slide-bottom-1" borderRadius="100px"></p-skeleton>
-                    <p-skeleton height="2rem" styleClass="mb-2 py-4 slide-bottom-1" borderRadius="100px"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
                 </div>
             </div>
 
             <div class="d-flex justify-content-end flex-column" style="height: 210px">
-                <p-skeleton height="2rem" styleClass="mb-2 py-4 slide-bottom-1" borderRadius="100px"></p-skeleton>
+                <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
             </div>
         </div>
 
         <div class="col bg-grey-5 rounded-end-2 p-5" *ngFor="let cust of customer">
-            <p-skeleton width="32rem" height="4rem" styleClass="mb-5 slide-bottom-1"></p-skeleton>
+            <p-skeleton width="32rem" height="4rem" styleClass="mb-5"></p-skeleton>
 
             <div class="d-flex flex-column gap-5" style="color: var(--color-grey-6);">
-                <p-skeleton width="30rem" height="1.5rem" styleClass="slide-bottom-1"></p-skeleton>
-                <p-skeleton width="8rem" height="1.5rem" styleClass="slide-bottom-1"></p-skeleton>
-                <p-skeleton width="15rem" height="1.5rem" styleClass="slide-bottom-1"></p-skeleton>
+                <p-skeleton width="30rem" height="1.5rem"></p-skeleton>
+                <p-skeleton width="8rem" height="1.5rem"></p-skeleton>
+                <p-skeleton width="15rem" height="1.5rem"></p-skeleton>
             </div>
         </div>
     </div>

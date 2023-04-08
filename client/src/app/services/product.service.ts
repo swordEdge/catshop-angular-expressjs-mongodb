@@ -45,4 +45,44 @@ export class ProductService {
       catchError(handleError)
     );
   }
+
+  getProductById(id: string, token: string): Observable<any> {
+    const headerOptions = new HttpHeaders()
+      .set(api.authHead, token);
+
+    return this.http.get<any>(
+      `${api.baseURL}${this.URL}/search/product_id/${id}`,
+      { headers: headerOptions }
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
+
+  updateProductById(data: any, id: string, token: string): Observable<any> {
+    const headerOptions = new HttpHeaders()
+      .set(api.authHead, token);
+
+    return this.http.put<any>(
+      `${api.baseURL}${this.URL}/update/${id}`,
+      data,
+      { headers: headerOptions }
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
+
+  deleteProductById(id: string, token: string): Observable<any> {
+    const headerOptions = new HttpHeaders()
+      .set(api.authHead, token);
+
+    return this.http.delete<any>(
+      `${api.baseURL}${this.URL}/delete/${id}`,
+      { headers: headerOptions }
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
 }

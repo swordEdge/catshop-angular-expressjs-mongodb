@@ -13,4 +13,17 @@ export class OrderService {
   constructor(
     private http: HttpClient
   ) { }
+
+  getOrderBySellerId(sell_id: string, token: string): Observable<any> {
+    const headerOptions = new HttpHeaders()
+      .set(api.authHead, token);
+
+    return this.http.get<any>(
+      `${api.baseURL}${this.URL}/seller/${sell_id}`,
+      { headers: headerOptions }
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
 }

@@ -10,6 +10,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { AvatarModule } from 'primeng/avatar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SkeletonModule } from 'primeng/skeleton';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,7 +48,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     ConfirmDialogModule,
     ProgressSpinnerModule,
     AvatarModule,
-    SkeletonModule
+    SkeletonModule,
+    ConfirmPopupModule,
+    ConfirmDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

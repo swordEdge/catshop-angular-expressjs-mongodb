@@ -27,6 +27,10 @@ export class SellerService {
     return id ?? '';
   }
 
+  removeSellerId() {
+    localStorage.removeItem('sell_id');
+  }
+
   getSellerByCustomerId(cust_id: string, token: string): Observable<any> {
     const headerOptions = new HttpHeaders()
       .set(api.authHead, token);
@@ -55,6 +59,20 @@ export class SellerService {
     return this.http.post<any>(
       `${api.baseURL}${this.URL}/create`,
       body,
+      { headers: headerOptions }
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
+
+  updateById(data: any, sell_id: string, token: string): Observable<any> {
+    const headerOptions = new HttpHeaders()
+      .set(api.authHead, token);
+
+    return this.http.put<any>(
+      `${api.baseURL}${this.URL}/${sell_id}`,
+      data,
       { headers: headerOptions }
     ).pipe(
       retry(1),
