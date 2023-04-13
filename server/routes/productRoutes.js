@@ -1,12 +1,17 @@
 const express = require('express');
 const productControllers = require('../controllers/productControllers');
 const authControllers = require('../controllers/authControllers');
+const { product } = require('../helpers/handlerError');
 
 const router = express.Router();
 
 router
     .route('/')
     .get(productControllers.getAllProducts)
+
+router
+    .route('/allproducts/:id')
+    .get(authControllers.auth, productControllers.getProductNotSellerId)
 
 router
     .route('/create')

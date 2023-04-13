@@ -78,13 +78,13 @@ export class SellerProfileComponent {
 
     setTimeout(() => {
       this.loadingService.hideLoading();
+      this.loadProductData();
+      this.loadVisualization();
+      this.loadOrderData();
       this.showContent = true;
     }, 1500);
 
     this.LoadSellerData();
-    this.loadProductData();
-    this.loadVisualization();
-    this.loadOrderData();
   }
 
   ngOnDestroy() {

@@ -1,1 +1,131 @@
-<p>product-show works!</p>
+<nav class="bg-grey-1">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+        <img class="" style="cursor: pointer;" src="../../../assets/logo-blue.svg" alt="after meow logo" width="150"
+            height="50" />
+
+        <ul class="d-flex align-items-center m-0 gap-5">
+            <li class="list-unstyled">
+                <i class="pi pi-home" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"
+                    routerLink="/product-show">
+                </i>
+            </li>
+
+            <li class="list-unstyled">
+                <i class="pi pi-heart" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
+            </li>
+
+
+            <li class="list-unstyled">
+                <i class="pi pi-bell position-relative"
+                    style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
+                    <span
+                        class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
+                        style="font-family: 'Inter', sans-serif; font-size: 0.8rem;">
+                        10
+                    </span>
+                </i>
+            </li>
+
+            <li class="list-unstyled">
+                <i class="pi pi-shopping-cart position-relative"
+                    style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
+                    <span
+                        class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
+                        style="font-family: 'Inter', sans-serif; font-size: 0.8rem;"
+                    >
+                        15
+                    </span>
+                </i>
+            </li>
+
+            <li class="list-unstyled">
+                <i class="pi pi-cog" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mx-auto mt-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <form class="slide-bottom-1" [formGroup]="searchForm" (ngSubmit)="onSubmitSearch()">
+            <input 
+                type="text"
+                class="input-signup rounded-pill px-3 py-2"
+                style="border: none; background-color: #C2EBF4;"
+                formControlName="search"
+                placeholder="Search"
+                maxlength="10"
+            />
+        </form>
+
+        <div class="d-flex gap-3">
+            <div 
+                class="rounded-pill d-flex gap-2 align-items-center p-2 slide-bottom-1 {{cateSelect === 'alls' ? 'bg-warning shadow' : 'bg-light'}}"
+                style="cursor: pointer;"
+                (click)="onClickCategory('alls')"
+            >
+                <i class="pi pi-th-large" style="font-size: 1.2rem"></i>
+                <h6 class="m-0 fw-semibold">ทั้งหมด</h6>
+            </div>
+
+            <div 
+                class="rounded-pill d-flex gap-2 align-items-center p-2 slide-bottom-1 {{cateSelect === 'foods' ? 'bg-warning shadow' : 'bg-light'}}"
+                style="cursor: pointer;"
+                (click)="onClickCategory('foods')"
+            >
+                <i class="pi pi-th-large" style="font-size: 1.2rem"></i>
+                <h6 class="m-0 fw-semibold">อาหาร และขนม</h6>
+            </div>
+
+            <div 
+                class="rounded-pill d-flex gap-2 align-items-center p-2 slide-bottom-1 {{cateSelect === 'cats' ? 'bg-warning shadow' : 'bg-light'}}"
+                style="cursor: pointer;"
+                (click)="onClickCategory('cats')"
+            >
+                <i class="pi pi-th-large" style="font-size: 1.2rem"></i>
+                <h6 class="m-0 fw-semibold">น้องแมว</h6>
+            </div>
+
+            <div 
+                class="rounded-pill d-flex gap-2 align-items-center p-2 slide-bottom-1 {{cateSelect === 'tools' ? 'bg-warning shadow' : 'bg-light'}}"
+                style="cursor: pointer;"
+                (click)="onClickCategory('tools')"
+            >
+                <i class="pi pi-th-large" style="font-size: 1.2rem"></i>
+                <h6 class="m-0 fw-semibold">อุปกรณ์เสริม</h6>
+            </div>
+
+            <div 
+                class="rounded-pill d-flex gap-2 align-items-center p-2 slide-bottom-1 {{cateSelect === 'toys' ? 'bg-warning shadow' : 'bg-light'}}"
+                style="cursor: pointer;"
+                (click)="onClickCategory('toys')"
+            >
+                <i class="pi pi-th-large" style="font-size: 1.2rem"></i>
+                <h6 class="m-0 fw-semibold">ของเล่น</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- All -->
+<div class="container mx-auto mt-5 mb-3">
+    <div class="row">
+        <div class="col-2 p-2" *ngFor="let p of products">
+            <div class="card shadow" style="height: 350px;">
+                <img 
+                    [src]="p.image"
+                    class="card-img-top w-100"
+                    style="object-fit: cover; cursor: pointer;"
+                    height="200"
+                />
+
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h6 class="">{{p.name}}</h6>
+                    <h6 class="m-0 align-self-end" style="color: var(--color-grey-1)">{{p.price | currency: 'thb' : '฿' : '1.2-2'}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-toast></p-toast>

@@ -54,6 +54,8 @@ exports.product = (err, res) => {
     let msg = '';
     let code = 400;
 
+    console.log(err)
+
     if (err.message === 'Not found products🥺') {
         msg = 'Not found products🥺';
     }

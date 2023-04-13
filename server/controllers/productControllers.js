@@ -56,6 +56,23 @@ exports.getProductByName = async(req, res, next) => {
     }
 };
 
+exports.getProductNotSellerId = async(req, res) => {
+    try {
+        const { id } = req.params;
+
+        if (!id) throw Error('Invalid request');
+
+        const products = await Product.find({ seller_id: { $ne: id }});
+
+        res.status(200).send({
+            status: 'success',
+            data: products
+        });
+    } catch (err) {
+        handlerError.product(err, res);
+    }
+};
+
 exports.getProductBySellerId = async(req, res, next) => {
     try {
         const { id } = req.params;

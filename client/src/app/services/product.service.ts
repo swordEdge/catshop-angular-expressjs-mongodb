@@ -33,12 +33,34 @@ export class ProductService {
     );
   }
 
+  getAllProduct(): Observable<any> {
+    return this.http.get<any>(
+      `${api.baseURL}${this.URL}`
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
+
   getProductsBySellerId(sell_id: string, token: string): Observable<any> {
     const headerOptions = new HttpHeaders()
       .set(api.authHead, token);
 
     return this.http.get<any>(
       `${api.baseURL}${this.URL}/search/seller/${sell_id}`,
+      { headers: headerOptions }
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
+
+  getProductByNotSellerId(sell_id: string, token: string): Observable<any> {
+    const headerOptions = new HttpHeaders()
+      .set(api.authHead, token);
+
+    return this.http.get<any>(
+      `${api.baseURL}${this.URL}/allproducts/${sell_id}`,
       { headers: headerOptions }
     ).pipe(
       retry(1),
@@ -53,6 +75,15 @@ export class ProductService {
     return this.http.get<any>(
       `${api.baseURL}${this.URL}/search/product_id/${id}`,
       { headers: headerOptions }
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
+
+  searchProductByName(name: string): Observable<any> {
+    return this.http.get<any>(
+      `${api.baseURL}${this.URL}/search/product_name/${name}`
     ).pipe(
       retry(1),
       catchError(handleError)
