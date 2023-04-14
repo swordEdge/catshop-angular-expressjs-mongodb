@@ -148,8 +148,9 @@ exports.getOrderBySellerId = async(req, res, next) => {
 
 exports.createOrder = async(req, res, next) => {
     try {
-        const { customer_id, order_status, items } = handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_status', 
-            'items');
+        const { customer_id, order_status, items } = handlerFactory.checkEmptyReq(req.body, 'customer_id', 'order_status', 'items');
+
+        console.log(items)
 
         items.map(p => handlerFactory.checkStringNumber(p.quantity, 'Quantity'));
         

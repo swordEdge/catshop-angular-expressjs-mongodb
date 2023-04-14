@@ -173,7 +173,11 @@ export class SellerProfileComponent {
           if (data.length > 0) {
             this.orders = data;
 
-            this.total_sale = this.orders.reduce((acc, curr) => acc + curr.total_price, 0);
+            this.total_sale = this.orders.reduce((acc, curr) => {
+              return acc + Number(curr.items.map(i => {
+                return i.price
+              })) 
+            }, 0);
           }
         },
         error: (err) => {
@@ -378,14 +382,7 @@ export class SellerProfileComponent {
   openEditProd(id: any) {
     this.editProduct = true;
 
-    const token = this.authService.getToken();
-
-    if (token === '') {
-      this.router.navigateByUrl('/login');
-      return;
-    }
-
-    this.prodService.getProductById(id, token ?? '')
+    this.prodService.getProductById(id)
       .subscribe({
         next: ({ data }) => {
           this.productEdit = data;

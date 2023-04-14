@@ -22,6 +22,8 @@ import { SellerSignupComponent } from './pages/seller-signup/seller-signup.compo
 import { SellerProfileComponent } from './pages/seller-profile/seller-profile.component';
 import { CustomerEditComponent } from './pages/customer-edit/customer-edit.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { ProductCartComponent } from './pages/product-cart/product-cart.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     SellerProfileComponent,
     CustomerEditComponent,
     PageNotFoundComponent,
+    ProductDetailComponent,
+    ProductCartComponent,
   ],
   imports: [
     BrowserModule,

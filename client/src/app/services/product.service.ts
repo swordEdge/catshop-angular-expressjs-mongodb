@@ -68,13 +68,9 @@ export class ProductService {
     );
   }
 
-  getProductById(id: string, token: string): Observable<any> {
-    const headerOptions = new HttpHeaders()
-      .set(api.authHead, token);
-
+  getProductById(id: string): Observable<any> {
     return this.http.get<any>(
-      `${api.baseURL}${this.URL}/search/product_id/${id}`,
-      { headers: headerOptions }
+      `${api.baseURL}${this.URL}/search/product_id/${id}`
     ).pipe(
       retry(1),
       catchError(handleError)

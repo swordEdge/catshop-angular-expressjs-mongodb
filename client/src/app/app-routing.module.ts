@@ -8,11 +8,14 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { CustomerEditComponent } from './pages/customer-edit/customer-edit.component';
 import { SellerProfileComponent } from './pages/seller-profile/seller-profile.component';
 import { SellerSignupComponent } from './pages/seller-signup/seller-signup.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { ProductCartComponent } from './pages/product-cart/product-cart.component';
 
 const routes: Routes = [
-  // { path: '', pathMatch: 'full', redirectTo: '/product-show'},
-  { path: '', pathMatch: 'full', redirectTo: '/signup'}, // test
+  { path: '', pathMatch: 'full', redirectTo: '/product-show'},
   { path: 'product-show', component: ProductShowComponent },
+  { path: 'product-detail/:id', component: ProductDetailComponent },
+  { path: 'product-cart/:id', component: ProductCartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'customer-profile', component: CustomerProfileComponent },

@@ -6,7 +6,8 @@ export interface IOrder {
     items: [
         {
             product_id: string,
-            quantity: number
+            quantity: number,
+            price: number
         }
     ],
     total_price: number

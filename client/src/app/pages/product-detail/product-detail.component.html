@@ -1,0 +1,90 @@
+<nav class="bg-grey-1">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+        <img class="" style="cursor: pointer;" src="../../../assets/logo-blue.svg" alt="after meow logo" width="150"
+            height="50" />
+
+        <ul class="d-flex align-items-center m-0 gap-5">
+            <li class="list-unstyled">
+                <i class="pi pi-home" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"
+                    routerLink="/product-show">
+                </i>
+            </li>
+
+            <li class="list-unstyled">
+                <i class="pi pi-heart" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
+            </li>
+
+
+            <li class="list-unstyled">
+                <i class="pi pi-bell position-relative"
+                    style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
+                    <span
+                        class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
+                        style="font-family: 'Inter', sans-serif; font-size: 0.8rem;">
+                        10
+                    </span>
+                </i>
+            </li>
+
+            <li class="list-unstyled">
+                <i class="pi pi-shopping-cart position-relative"
+                    style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
+                    <span
+                        class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
+                        style="font-family: 'Inter', sans-serif; font-size: 0.8rem;"
+                    >
+                        15
+                    </span>
+                </i>
+            </li>
+
+            <li class="list-unstyled">
+                <i class="pi pi-cog" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mx-auto mt-5">
+    <button 
+        class="btn mb-3 d-flex gap-3 align-items-center"
+        routerLink="/product-show"
+    >
+        <i class="pi pi-arrow-left"></i>
+        Back
+    </button>
+
+    <div class="row rounded shadow" style="height: 700px;">
+        <div class="col-5 rounded-start-2" *ngFor="let p of product" style="background-color: #D5E1EF;">
+            <div class="p-5">
+                <img 
+                    [src]="p.image"
+                    height="500"
+                    style="object-fit: cover;"
+                    class="w-100"
+                />
+            </div>
+        </div>
+
+        <div class="col-7 p-5 rounded-end-2" *ngFor="let p of product" style="background-color: #EDEDED;">
+            <div class="d-flex flex-column">
+                <h2>{{p.name}}</h2>
+                
+                <div class="mt-4">
+                    <p>รายละเอียด<br /> <span class="h5">{{p.description}}</span></p>
+                    <p>ราคา <br /> <span class="h5">{{p.price | number:'1.2-2'}}</span></p>
+                    <p>สินค้าในคลัง <br /> <span class="h5">{{p.quantity}}</span></p>
+                </div>
+    
+                <div class="text-end align-self-end">
+                    <button 
+                        class="btn btn-success rounded-pill text-white"
+                        (click)="onClickCart(p._id)"
+                    >
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

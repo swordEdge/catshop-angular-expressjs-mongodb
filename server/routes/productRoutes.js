@@ -11,7 +11,7 @@ router
 
 router
     .route('/allproducts/:id')
-    .get(authControllers.auth, productControllers.getProductNotSellerId)
+    .get(productControllers.getProductNotSellerId)
 
 router
     .route('/create')
@@ -31,7 +31,7 @@ router
 
 router
     .route('/search/product_id/:id')
-    .get(authControllers.auth, productControllers.getProductById)
+    .get(productControllers.getProductById);
 
 router
     .route('/search/seller/:id')
