@@ -24,6 +24,8 @@ import { CustomerEditComponent } from './pages/customer-edit/customer-edit.compo
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { ProductCartComponent } from './pages/product-cart/product-cart.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ProductCartComponent } from './pages/product-cart/product-cart.componen
     PageNotFoundComponent,
     ProductDetailComponent,
     ProductCartComponent,
+    HomeComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

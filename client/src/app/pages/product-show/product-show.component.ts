@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
@@ -8,6 +8,8 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { IProduct } from 'src/app/models/product.model';
 import { filterCategory } from 'src/app/helpers/handleFactory';
 import { MessageService } from 'primeng/api';
+import { ICustomer } from 'src/app/models/customer.model';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-product-show',
@@ -17,6 +19,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ProductShowComponent implements OnInit {
   products: IProduct[] = [];
+  customer: ICustomer[] = [];
 
   alls: IProduct[] = [];
   cats: IProduct[] = [];
@@ -27,7 +30,8 @@ export class ProductShowComponent implements OnInit {
 
   searchForm: FormGroup;
   searchAction: boolean = false;
-
+  userLogin: boolean = false;
+  showContent: boolean = false;
   cateSelect: string = 'alls';
 
   constructor(
@@ -37,7 +41,8 @@ export class ProductShowComponent implements OnInit {
     private authService: AuthService,
     private custService: CustomerService,
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private loadingService: LoadingService,
   ) { 
     this.searchForm = this.fb.group({
       search: ['', Validators.required]
@@ -45,7 +50,19 @@ export class ProductShowComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadingService.showLoading();
+
+    setTimeout(() => {
+      this.loadingService.hideLoading();
+      this.showContent = true;
+    }, 1000);
+
     this.loadProductData();
+  }
+
+  ngOnDestroy() {
+    this.loadingService.hideLoading();
+    window.location.reload();
   }
 
   messageToast(type: string, message: string) {
@@ -61,6 +78,8 @@ export class ProductShowComponent implements OnInit {
     const sell_id = this.sellService.getSellerId();
     const cust_id = this.custService.getCustomerId();
 
+    console.log(token, sell_id, cust_id);
+
     // CHECK LOGIN, SELLER
     if (cust_id !== '') {
       if (token === '') {
@@ -68,17 +87,29 @@ export class ProductShowComponent implements OnInit {
         return;
       }
 
+      this.userLogin = true;
+
+      this.custService.getCustomerById(cust_id, token ?? '')
+        .subscribe({
+          next: ({ data }) => {
+            this.customer = [data];
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
+
       this.sellService.getSellerByCustomerId(cust_id, token ?? '')
         .subscribe({
           next: ({ data }) => {
             this.prodService.getProductByNotSellerId(data[0]._id, token ?? '')
               .subscribe({
                 next: ({ data }) => {
-                  this.alls = data;
+                  this.alls = data.filter((d: any) => d.quantity > 0);
                   this.products = this.alls;
                 },
                 error: (err) => {
-                  console.log(err)
+                  console.log(err);
                 }
               });
           },
@@ -86,7 +117,7 @@ export class ProductShowComponent implements OnInit {
             this.prodService.getAllProduct()
               .subscribe({
                 next: ({ data }) => {
-                  this.alls = data;
+                  this.alls = data.filter((d: any) => d.quantity > 0);
                   this.products = this.alls;
                 },
                 error: (err) => {
@@ -99,7 +130,7 @@ export class ProductShowComponent implements OnInit {
       this.prodService.getAllProduct()
         .subscribe({
           next: ({ data }) => {
-            this.alls = data;
+            this.alls = data.filter((d: any) => d.quantity > 0);
             this.products = this.alls;
           },
           error: (err) => {
@@ -184,5 +215,10 @@ export class ProductShowComponent implements OnInit {
           this.products = this.alls;  
         }
       })
+  }
+
+  onClickProduct(id: string) {
+    this.prodService.setProductId(id);
+    this.router.navigateByUrl('/product-detail');
   }
 }

@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
-import { SellerService } from 'src/app/services/seller.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { IProduct } from 'src/app/models/product.model';
-import { ISeller } from 'src/app/models/seller.model';
-import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
+import { LoadingService } from 'src/app/services/loading.service';
 import { OrderService } from 'src/app/services/order.service';
+import { ICustomer } from 'src/app/models/customer.model';
 
 @Component({
   selector: 'app-product-cart',
@@ -19,20 +18,38 @@ export class ProductCartComponent {
   product: IProduct[] = [];
   amount: number = 1;
 
+  customer: ICustomer[] = [];
+
+  userLogin: boolean = false;
+  showContent: boolean = false;
+  confirm: boolean = false;
+
   constructor(
     private router: Router,
     private productService: ProductService,
-    private sellerService: SellerService,
-    private activeRoute: ActivatedRoute,
-    private authService: AuthService,
     private custService: CustomerService,
+    private authService: AuthService,
+    private loadingService: LoadingService,
     private orderService: OrderService
   ) {
-    this.p_id = this.activeRoute.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
+    this.loadingService.showLoading();
+
+    setTimeout(() => {
+      this.loadingService.hideLoading();
+      this.showContent = true;
+    }, 500);
+
+    this.p_id = this.productService.getProductId();
     this.loadData();
+    this.loadCustomer();
+  }
+
+  ngOnDestroy() {
+    this.loadingService.hideLoading();
+    window.location.reload();
   }
 
   loadData() {
@@ -40,6 +57,24 @@ export class ProductCartComponent {
       .subscribe({
         next: ({ data }) => {
           this.product = [data];
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+  }
+
+  loadCustomer() {
+    const token = this.authService.getToken();
+    const cust_id = this.custService.getCustomerId();
+
+    if (token === '' || cust_id === '') return;
+
+    this.custService.getCustomerById(cust_id, token ?? '')
+      .subscribe({
+        next: ({ data }) => {
+          this.customer = [data];
+          this.userLogin = true;
         },
         error: (err) => {
           console.log(err);
@@ -75,12 +110,15 @@ export class ProductCartComponent {
       id: this.product[0]._id,
     }
 
-    console.log(data)
-
     this.orderService.createOrder(data, cust_id, token ?? '')
       .subscribe({
         next: () => {
-          this.router.navigateByUrl('/product-show');
+          setInterval(() => {
+            this.router.navigateByUrl('/product-show');
+          }, 1000);
+
+          this.confirm = true;
+          this.productService.removeProductId();
         },
         error: (err) => {
           console.log(err);

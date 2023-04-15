@@ -14,6 +14,22 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
+  setProductId(id: string) {
+    if (id) {
+      localStorage.setItem('p_id', id);
+    }
+  }
+
+  getProductId(): string {
+    const id = localStorage.getItem('p_id');
+
+    return id ?? '';
+  }
+
+  removeProductId() {
+    localStorage.removeItem('p_id');
+  }
+
   createProduct(product: any, sell_id: string, token: string): Observable<any> {
     const headerOptions = new HttpHeaders()
       .set(api.authHead, token);

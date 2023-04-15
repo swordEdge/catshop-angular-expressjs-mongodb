@@ -1,0 +1,249 @@
+.slider {
+    overflow: hidden;
+}
+
+.slides {
+    width: 400%;
+    height: 100%;
+    -webkit-animation: slide 16s infinite;
+    -moz-animation: slide 16s infinite;
+    animation: slide 16s infinite;
+}
+
+.slides-2 {
+    width: 400%;
+    height: 100%;
+    -webkit-animation: slide 16s infinite 1s;
+    -moz-animation: slide 16s infinite 1s;
+    animation: slide 16s infinite 1s;
+}
+
+.slides-3 {
+    width: 400%;
+    height: 100%;
+    -webkit-animation: slide 16s infinite 0.5s;
+    -moz-animation: slide 16s infinite 0.5s;
+    animation: slide 16s infinite 0.5s;
+}
+
+.slider-1,
+.slider-2,
+.slider-3,
+.slider-4 {
+    width: 25%;
+    height: 100%;
+    ;
+}
+
+
+@-webkit-keyframes slide {
+
+    0%,
+    100% {
+        margin-left: 0%;
+    }
+
+    12% {
+        margin-left: 0%;
+    }
+
+    24% {
+        margin-left: -100%;
+    }
+
+    36% {
+        margin-left: -100%;
+    }
+
+    48% {
+        margin-left: -200%;
+    }
+
+    60% {
+        margin-left: -200%;
+    }
+
+    72% {
+        margin-left: -300%;
+    }
+
+    84% {
+        margin-left: -300%;
+    }
+}
+
+@-moz-keyframes slide {
+
+    0%,
+    100% {
+        margin-left: 0%;
+    }
+
+    12% {
+        margin-left: 0%;
+    }
+
+    24% {
+        margin-left: -100%;
+    }
+
+    36% {
+        margin-left: -100%;
+    }
+
+    48% {
+        margin-left: -200%;
+    }
+
+    60% {
+        margin-left: -200%;
+    }
+
+    72% {
+        margin-left: -300%;
+    }
+
+    84% {
+        margin-left: -300%;
+    }
+}
+
+@keyframes slide {
+
+    0%,
+    100% {
+        margin-left: 0%;
+    }
+
+    12% {
+        margin-left: 0%;
+    }
+
+    24% {
+        margin-left: -100%;
+    }
+
+    36% {
+        margin-left: -100%;
+    }
+
+    48% {
+        margin-left: -200%;
+    }
+
+    60% {
+        margin-left: -200%;
+    }
+
+    72% {
+        margin-left: -300%;
+    }
+
+    84% {
+        margin-left: -300%;
+    }
+}
+
+.tracking-in-expand {
+    -webkit-animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+@-webkit-keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.text-change::after {
+    content: "seller";
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    10% {
+        content: "cat protector";
+    }
+
+    50% {
+        content: "cat dealer";
+    }
+
+    80% {
+        content: "after meow";
+    }
+}
+
+.color-change-5x {
+    -webkit-animation: color-change-5x 20s ease-in-out infinite alternate both;
+    animation: color-change-5x 20s ease-in-out infinite alternate both;
+}
+
+
+@-webkit-keyframes color-change-5x {
+    0% {
+        background: #19dcea;
+    }
+
+    25% {
+        background: #b22cff;
+    }
+
+    50% {
+        background: #ea2222;
+    }
+
+    75% {
+        background: #f5be10;
+    }
+
+    100% {
+        background: #3bd80d;
+    }
+}
+
+@keyframes color-change-5x {
+    0% {
+        background: #19dcea;
+    }
+
+    25% {
+        background: #b22cff;
+    }
+
+    50% {
+        background: #ea2222;
+    }
+
+    75% {
+        background: #f5be10;
+    }
+
+    100% {
+        background: #3bd80d;
+    }
+}

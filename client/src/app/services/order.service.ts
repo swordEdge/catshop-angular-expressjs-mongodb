@@ -27,6 +27,19 @@ export class OrderService {
     );
   }
 
+  getOrderByCustomerId(cust_id: string, token: string): Observable<any> {
+    const headerOptions = new HttpHeaders()
+      .set(api.authHead, token);
+
+    return this.http.get<any>(
+      `${api.baseURL}${this.URL}/customer/${cust_id}`,
+      { headers: headerOptions }
+    ).pipe(
+      retry(1),
+      catchError(handleError)
+    );
+  }
+
   createOrder(data: any, cust_id: string, token: string): Observable<any> {
     const headerOptions = new HttpHeaders()
       .set(api.authHead, token);

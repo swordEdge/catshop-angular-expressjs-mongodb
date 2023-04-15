@@ -45,6 +45,16 @@ body {
     padding: 0.8rem 2rem;
 }
 
+.button-3 {
+    border: none;
+}
+
+.button-outline-blue {
+    border: 1px solid var(--color-blue-1);
+    background-color: transparent;
+    color: var(--color-blue-1);
+}
+
 .button-text-white-1 {
     color: var(--color-white-1);
     font-size: 1.2rem;
@@ -60,6 +70,13 @@ body {
 
 .button-bg-red-1 {
     background-color: var(--color-red-1);
+}
+
+/* ---LINK--- */
+.underline-blue {
+    color: var(--color-blue-1);
+    text-decoration: underline;
+    text-decoration-color: var(--color-blue-1);
 }
 
 /* ---INPUT--- */
@@ -87,6 +104,10 @@ body {
 }
 
 /* ---TEXT COLOR--- */
+.text-grey-1 {
+    color: var(--color-grey-1) !important;
+}
+
 .text-brown-1 {
     color: var(--color-brown-1) !important;
 }
@@ -99,6 +120,10 @@ body {
     color: var(--color-brown-2) !important;
 }
 
+.text-blue-2 {
+    color: var(--color-blue-2) !important;
+}
+
 .text-pink-2 {
     color: var(--color-pink-2) !important;
 }
@@ -107,9 +132,33 @@ body {
     color: var(--color-brown-3) !important;
 }
 
+.text-grey-3 {
+    color: var(--color-grey-3) !important;
+}
+
+/* ---GRADIENT--- */
+.text-grandient {
+    background: #E6DE00;
+    background: linear-gradient(to top right, #E6DE00 27%, #F51ECA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-grandient-2 {
+    background: #00CF29;
+    background: linear-gradient(to bottom left, #00CF29 0%, #00C1CF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    
+}
+
+
 /* ---BACKGROUND-COLOR--- */
 .bg-white-1 {
     background-color: var(--color-white-1);
+}
+
+.bg-blue-1 {
+    background-color: var(--color-blue-1);
 }
 
 .bg-grey-1 {
@@ -154,7 +203,9 @@ body {
 
 /* --TABLE-- */
 .stickhead {
-    position: sticky; top: 0; z-index: 1;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 /* ---ANIMATE--- */

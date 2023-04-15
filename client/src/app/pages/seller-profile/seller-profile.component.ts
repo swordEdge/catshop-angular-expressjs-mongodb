@@ -47,7 +47,7 @@ export class SellerProfileComponent {
   addProduct: boolean = false;
   editProduct: boolean = false;
   sellerEdit: boolean = false;
-
+  
   data: any;
   options: any;
 
@@ -82,13 +82,14 @@ export class SellerProfileComponent {
       this.loadVisualization();
       this.loadOrderData();
       this.showContent = true;
-    }, 1500);
+    }, 1000);
 
     this.LoadSellerData();
   }
 
   ngOnDestroy() {
     this.loadingService.hideLoading();
+    window.location.reload();
   }
 
   messageToast(type: string, message: string) {

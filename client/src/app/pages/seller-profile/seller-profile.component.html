@@ -1,507 +1,475 @@
-<div class="vh-100 position-relative w-100">
-    <nav class="bg-grey-1">
-        <div class="container d-flex align-items-center justify-content-between py-2">
-            <img class="" style="cursor: pointer;" src="../../../assets/logo-blue.svg" alt="after meow logo" width="150"
-                height="50" />
+<nav class="bg-grey-1">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+        <img 
+            class="" 
+            style="cursor: pointer;" 
+            src="../../../assets/logo-blue.svg" 
+            alt="after meow logo" 
+            width="150"
+            height="50" 
+        />
+    </div>
+</nav>
 
-            <ul class="d-flex align-items-center m-0 gap-5">
-                <li class="list-unstyled">
-                    <i class="pi pi-home" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"
-                        routerLink="/product-show">
-                    </i>
-                </li>
+<div 
+    class="shadow rounded container mx-auto mt-4 p-0 row"
+    *ngIf="!showContent" style="height: 700px;"
+>
+    <div class="col-3 bg-pink-1 m-0 rounded-start-2 px-5" *ngFor="let sell of seller">
+        <div class="d-flex flex-column gap-5 align-items-center mt-4 justify-content-between">
+            <div class="align-self-star gap-3 d-flex align-items-center">
+                <p-skeleton shape="circle" size="4.7rem"></p-skeleton>
 
-                <li class="list-unstyled">
-                    <i class="pi pi-heart" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
-                </li>
-
-
-                <li class="list-unstyled">
-                    <i class="pi pi-bell position-relative"
-                        style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
-                        <span
-                            class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
-                            style="font-family: 'Inter', sans-serif; font-size: 0.8rem;">
-                            10
-                        </span>
-                    </i>
-                </li>
-
-                <li class="list-unstyled">
-                    <i class="pi pi-shopping-cart position-relative"
-                        style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
-                        <span
-                            class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
-                            style="font-family: 'Inter', sans-serif; font-size: 0.8rem;"
-                        >
-                            15
-                        </span>
-                    </i>
-                </li>
-
-                <li class="list-unstyled">
-                    <i class="pi pi-cog" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div 
-        class="position-absolute top-50 start-50 translate-middle shadow rounded container mx-auto mt-4 p-0 row"
-        *ngIf="!showContent" style="height: 700px;"
-    >
-        <div class="col-3 bg-pink-1 m-0 rounded-start-2 px-5" *ngFor="let sell of seller">
-            <div class="d-flex flex-column gap-5 align-items-center mt-4 justify-content-between">
-                <div class="align-self-star gap-3 d-flex align-items-center">
-                    <p-skeleton shape="circle" size="4.7rem"></p-skeleton>
-
-                    <div class="d-flex flex-column mt-2 gap-3">
-                        <p-skeleton height="1rem" width="7rem" styleClass="mb-1"></p-skeleton>
-                        <p-skeleton height=".5rem" width="4.5rem" styleClass=""></p-skeleton>
-                        <p-skeleton height=".5rem" width="4.5rem" styleClass=""></p-skeleton>
-                    </div>
-                </div>
-
-                <div class="w-100 d-flex flex-column gap-4 text-brown-2">
-                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
-                        <p-skeleton width="5rem"></p-skeleton>
-                        <p-skeleton width="10rem" height="3rem"></p-skeleton>
-                    </div>
-
-                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
-                        <p-skeleton width="5rem"></p-skeleton>
-                        <p-skeleton width="10rem" height="3rem"></p-skeleton>
-                    </div>
-
-                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
-                        <p-skeleton width="5rem"></p-skeleton>
-                        <p-skeleton width="10rem" height="3rem"></p-skeleton>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-end flex-column w-100">
-                    <p-skeleton height="3rem" borderRadius="100px" styleClass="w-100"></p-skeleton>
+                <div class="d-flex flex-column mt-2 gap-3">
+                    <p-skeleton height="1rem" width="7rem" styleClass="mb-1"></p-skeleton>
+                    <p-skeleton height=".5rem" width="4.5rem" styleClass=""></p-skeleton>
+                    <p-skeleton height=".5rem" width="4.5rem" styleClass=""></p-skeleton>
                 </div>
             </div>
-        </div>
 
-        <div class="col bg-pink-2 m-0 rounded-end-2 p-5 w-50 d-flex flex-column gap-5">
-            <div 
-                class="shadow rounded px-5 py-3 bg-white-1 w-100" 
-            >
-                <p-skeleton height="25rem"></p-skeleton>
+            <div class="w-100 d-flex flex-column gap-4 text-brown-2">
+                <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
+                    <p-skeleton width="5rem"></p-skeleton>
+                    <p-skeleton width="10rem" height="3rem"></p-skeleton>
+                </div>
+
+                <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
+                    <p-skeleton width="5rem"></p-skeleton>
+                    <p-skeleton width="10rem" height="3rem"></p-skeleton>
+                </div>
+
+                <div class="shadow bg-white-1 w-100 rounded p-3 d-flex gap-2 flex-column shadow">
+                    <p-skeleton width="5rem"></p-skeleton>
+                    <p-skeleton width="10rem" height="3rem"></p-skeleton>
+                </div>
             </div>
 
-            <div class="w-100 d-flex gap-3">
-                <p-skeleton width="15rem" height="3.5rem"></p-skeleton>
-                <p-skeleton width="15rem" height="3.5rem"></p-skeleton>
+            <div class="d-flex justify-content-end flex-column w-100">
+                <p-skeleton height="3rem" borderRadius="100px" styleClass="w-100"></p-skeleton>
             </div>
         </div>
     </div>
 
-    <div class="position-absolute top-50 start-50 translate-middle shadow rounded container mx-auto mt-4 p-0 row"
-        *ngIf="showContent" style="height: 700px;">
-        <div class="col-3 bg-pink-1 m-0 rounded-start-2 px-5" *ngFor="let sell of seller">
-            <div class="d-flex flex-column gap-5 align-items-center mt-4 justify-content-between">
-                <div class="align-self-star gap-3 d-flex align-items-center">
-                    <img 
-                        [src]="sell.store_image" 
-                        alt="seller avatar" 
-                        class="rounded-circle slide-bottom-1 shadow" 
-                        width="75"
-                        height="75" 
-                        style="pointer-events: none; object-fit: cover;" 
-                    />
+    <div class="col bg-pink-2 m-0 rounded-end-2 p-5 w-50 d-flex flex-column gap-5"> 
+        <div class="w-100 d-flex gap-3 mb-2">
+            <p-skeleton width="15rem" height="3.5rem"></p-skeleton>
+            <p-skeleton width="15rem" height="3.5rem"></p-skeleton>
+        </div>
+        
+        <div 
+            class="shadow rounded px-5 py-3 bg-white-1 w-100" 
+        >
+            <p-skeleton height="25rem"></p-skeleton>
+        </div>
+    </div>
+</div>
 
-                    <div class="d-flex flex-column mt-2 slide-bottom-1">
-                        <div class="h4 m-0 p-0 fw-semibold mb-2 text-brown-2">{{sell.store_name}}</div>
-                        <div class="d-flex gap-2 text-brown-3">
-                            <i class="pi pi-truck m-0 p-0" style="font-size: 1.3rem;"></i>
-                            <p class="m-0 p-0">Bangkok</p> 
-                        </div>
-                        <p class="m-0 p-0 text-brown-3">{{sell.store_email}}</p>
+<div 
+    class="shadow rounded container mx-auto mt-5 p-0 row"
+    *ngIf="showContent" 
+    style="height: 700px;"
+>
+    <div class="col-3 bg-pink-1 m-0 rounded-start-2 px-5" *ngFor="let sell of seller">
+        <div class="d-flex flex-column gap-5 align-items-center mt-4 justify-content-between">
+            <div class="align-self-star gap-3 d-flex align-items-center">
+                <img 
+                    [src]="sell.store_image" 
+                    alt="seller avatar" 
+                    class="rounded-circle slide-bottom-1 shadow" 
+                    width="75"
+                    height="75" 
+                    style="pointer-events: none; object-fit: cover;" 
+                />
+
+                <div class="d-flex flex-column mt-2 slide-bottom-1">
+                    <div class="h4 m-0 p-0 fw-semibold mb-2 text-brown-2">{{sell.store_name}}</div>
+                    <div class="d-flex gap-2 text-brown-3">
+                        <i class="pi pi-truck m-0 p-0" style="font-size: 1.3rem;"></i>
+                        <p class="m-0 p-0">Bangkok</p> 
                     </div>
+                    <p class="m-0 p-0 text-brown-3">{{sell.store_email}}</p>
+                </div>
+            </div>
+
+            <div class="w-100 d-flex flex-column gap-4 slide-bottom-1 text-brown-2">
+                <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
+                    <h5 class="m-0 fw-medium">Total Sales</h5>
+                    <h1 class="m-0 fw-medium">{{total_sale | number : '1.2-2'}}</h1>
                 </div>
 
-                <div class="w-100 d-flex flex-column gap-4 slide-bottom-1 text-brown-2">
-                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
-                        <h5 class="m-0 fw-medium">Total Sales</h5>
-                        <h1 class="m-0 fw-medium">{{total_sale | number : '1.2-2'}}</h1>
-                    </div>
-
-                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
-                        <h5 class="m-0 fw-medium">Orders</h5>
-                        <h1 class="m-0 fw-medium">{{orders.length}}</h1>
-                    </div>
-
-                    <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
-                        <h5 class="m-0 fw-medium">Products</h5>
-                        <h1 class="m-0 fw-medium">{{products.length}}</h1>
-                    </div>
+                <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
+                    <h5 class="m-0 fw-medium">Orders</h5>
+                    <h1 class="m-0 fw-medium">{{orders.length}}</h1>
                 </div>
 
-                <div class="d-flex justify-content-end flex-column slide-bottom-1 w-100">
-                    <button 
-                        class="d-flex align-items-center justify-content-center gap-3 button bg-pink-2  fw-semibold w-100 align-self-end slide-bottom-1 px-2 text-brown-2"
-                        routerLink="/customer-profile"
-                    >
-                        <i class="pi pi-arrow-left m-0 p-0" style="font-size: 1.3rem;"></i>
-                        Back to customer
-                    </button>
+                <div class="shadow bg-white-1 w-100 rounded p-3 d-flex flex-column shadow">
+                    <h5 class="m-0 fw-medium">Products</h5>
+                    <h1 class="m-0 fw-medium">{{products.length}}</h1>
                 </div>
+            </div>
+
+            <div class="d-flex justify-content-end flex-column slide-bottom-1 w-100">
+                <button 
+                    class="d-flex align-items-center justify-content-center gap-3 button bg-pink-2  fw-semibold w-100 align-self-end slide-bottom-1 px-2 text-brown-2"
+                    routerLink="/customer-profile"
+                >
+                    <i class="pi pi-arrow-left m-0 p-0" style="font-size: 1.3rem;"></i>
+                    Back to customer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col bg-pink-2 m-0 rounded-end-2 p-5 w-50 d-flex flex-column">
+        <div class="w-100 d-flex gap-3 mb-5" *ngIf="showGraph">
+            <div 
+                class="shadow bg-white-1 rounded py-3 px-5 fw-semibold text-white d-flex gap-2 align-items-center bg-success slide-bottom-1"
+                style="cursor: pointer;"
+                (click)="onClickStoreManage()"
+            >   
+                <i class="pi pi-briefcase m-0 p-0" style="font-size: 1.3rem;"></i>
+                Store management
+            </div>
+
+            <div 
+                class="shadow bg-white-1 rounded py-3 px-5 fw-semibold  text-white d-flex gap-2 align-items-center bg-primary slide-bottom-1"
+                style="cursor: pointer;"
+                (click)="onClickStockManage()"
+            >   
+                <i class="pi pi-th-large m-0 p-0" style="font-size: 1.3rem;"></i>
+                Stock management
             </div>
         </div>
 
-        <div class="col bg-pink-2 m-0 rounded-end-2 p-5 w-50 d-flex flex-column">
-            <div 
-                class="shadow rounded px-5 py-3 bg-white-1 w-100 slide-bottom-1 mb-5"
-                *ngIf="showGraph"
-            >
-                <p-chart type="line" [data]="data" [options]="options" class="w-100"></p-chart>
+        <div 
+            class="shadow rounded px-5 py-3 bg-white-1 w-100 slide-bottom-1 mb-5"
+            *ngIf="showGraph"
+        >
+            <p-chart type="line" [data]="data" [options]="options" class="w-100"></p-chart>
+         </div>
+
+        <div 
+            class="text-white d-flex gap-2 align-items-center slide-bottom-1 align-self-start" 
+            style="cursor: pointer;"
+            *ngIf="!showGraph"
+            (click)="onClickBack()"
+        >
+            <i class="pi pi-arrow-left m-0 p-0" style="font-size: 1.3rem;"></i>
+            Back
+        </div>
+
+        <!-- STORE MANAGEMENT -->
+        <div *ngIf="showStoreManage">
+            <div class="d-flex align-items-center gap-2 mb-5 mt-4 slide-bottom-1" style="margin-left: 80px;">
+                <i class="pi pi-briefcase m-0 p-3 rounded-circle bg-success text-white" style="font-size: 1.3rem;"></i>
+                <h2 class="text-brown-2 fw-semibold m-0">Store management</h2>
             </div>
 
-            <div class="w-100 d-flex gap-3" *ngIf="showGraph">
-                <div 
-                    class="shadow bg-white-1 rounded py-3 px-5 fw-semibold text-white d-flex gap-2 align-items-center bg-success slide-bottom-1"
-                    style="cursor: pointer;"
-                    (click)="onClickStoreManage()"
-                >   
-                    <i class="pi pi-briefcase m-0 p-0" style="font-size: 1.3rem;"></i>
-                    Store management
-                </div>
+            <div class="d-flex gap-3 slide-bottom-1" style="margin-left: 80px;">                    
+                <p-button 
+                    (click)="editSeller()" 
+                    icon="pi pi-user" 
+                    label="Edit account">
+                </p-button>
 
-                <div 
-                    class="shadow bg-white-1 rounded py-3 px-5 fw-semibold  text-white d-flex gap-2 align-items-center bg-primary slide-bottom-1"
-                    style="cursor: pointer;"
-                    (click)="onClickStockManage()"
-                >   
-                    <i class="pi pi-th-large m-0 p-0" style="font-size: 1.3rem;"></i>
-                    Stock management
-                </div>
+                <p-button 
+                    (click)="deleteSeller($event)" 
+                    icon="pi pi-times" 
+                    styleClass="p-button-danger" 
+                    label="Delete seller account">
+                </p-button>
             </div>
 
-            <div 
-                class="text-white d-flex gap-2 align-items-center slide-bottom-1 align-self-start" 
-                style="cursor: pointer;"
-                *ngIf="!showGraph"
-                (click)="onClickBack()"
-            >
-                <i class="pi pi-arrow-left m-0 p-0" style="font-size: 1.3rem;"></i>
-                Back
-            </div>
+            <!-- EDIT SELLER FORM -->
+            <div class="mt-4 position-relative" *ngIf="sellerEdit">
+                <form 
+                    class="form d-flex flex-column gap-3 bg-white-1 rounded px-5 py-4 shadow position-absolute"
+                    style="width: 34rem; left: 80px;"
+                    *ngFor="let sell of seller"
+                    [formGroup]="storeForm"
+                    (ngSubmit)="onSubmitUpdateStore()"
+                >
+                    <h4 class="text-brown-2 fw-semibold">Account detail</h4>
+                    <input
+                        formControlName="store_name"
+                        type="text"
+                        placeholder="shope name"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
 
-            <!-- STORE MANAGEMENT -->
-            <div *ngIf="showStoreManage">
-                <div class="d-flex align-items-center gap-2 mb-5 mt-4 slide-bottom-1" style="margin-left: 80px;">
-                    <i class="pi pi-briefcase m-0 p-3 rounded-circle bg-success text-white" style="font-size: 1.3rem;"></i>
-                    <h2 class="text-brown-2 fw-semibold m-0">Store management</h2>
-                </div>
+                    <input
+                        formControlName="store_email"   
+                        type="email"
+                        placeholder="email"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
 
-                <div class="d-flex gap-3 slide-bottom-1" style="margin-left: 80px;">                    
-                    <p-button 
-                        (click)="editSeller()" 
-                        icon="pi pi-user" 
-                        label="Edit account">
-                    </p-button>
+                    <input
+                        formControlName="store_image"
+                        type="text"
+                        placeholder="image"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
 
-                    <p-button 
-                        (click)="deleteSeller($event)" 
-                        icon="pi pi-times" 
-                        styleClass="p-button-danger" 
-                        label="Delete seller account">
-                    </p-button>
-                </div>
+                    <input
+                        formControlName="store_phone"
+                        type="text"
+                        placeholder="phone"
+                        class="input-sigup form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
 
-                <!-- EDIT SELLER FORM -->
-                <div class="mt-4 position-relative" *ngIf="sellerEdit">
-                    <form 
-                        class="form d-flex flex-column gap-3 bg-white-1 rounded px-5 py-4 shadow position-absolute"
-                        style="width: 34rem; left: 80px;"
-                        *ngFor="let sell of seller"
-                        [formGroup]="storeForm"
-                        (ngSubmit)="onSubmitUpdateStore()"
-                    >
-                        <h4 class="text-brown-2 fw-semibold">Account detail</h4>
-                        <input
-                            formControlName="store_name"
-                            type="text"
-                            placeholder="shope name"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
-    
-                        <input
-                            formControlName="store_email"   
-                            type="email"
-                            placeholder="email"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
-    
-                        <input
-                            formControlName="store_image"
-                            type="text"
-                            placeholder="image"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
-    
-                        <input
-                            formControlName="store_phone"
-                            type="text"
-                            placeholder="phone"
-                            class="input-sigup form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
-    
-                        <div class="d-flex align-items-center gap-2 align-self-end">
-                            <button 
-                                type="reset"
-                                class="button-2 bg-warning text-white slide-bottom-1 align-self-start mt-3"
-                            >
-                                Clear
-                            </button>
-    
-                            <button 
-                                type="submit" 
-                                class="button-2 bg-primary text-white slide-bottom-1 align-self-start mt-3"
-                            >
-                                Update
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- STOCK MANAGEMENT -->
-            <div *ngIf="showStockManage">
-                <div class="d-flex align-items-center gap-2 mb-5 mt-4 slide-bottom-1" style="margin-left: 80px;">
-                    <i class="pi pi-th-large m-0 p-3 rounded-circle bg-primary text-white" style="font-size: 1.3rem;"></i>
-                    <h2 class="text-brown-2 fw-semibold m-0">Stock management</h2>
-                </div>
-
-                <div class="d-flex gap-3 slide-bottom-1" style="margin-left: 80px;">                    
-                    <p-button 
-                        (click)="addProd()" 
-                        icon="pi pi-plus" 
-                        styleClass="p-button-success" 
-                        label="Add product">
-                    </p-button>
-                </div>
-
-                <!-- NO ITEMS IN TABLE -->
-                <div class="position-relative mt-3" style="margin-left: 80px;" *ngIf="products.length === 0 && !addProduct && !editProduct">
-                    <div 
-                        class="position-absolute bg-white-1 rounded px-5 py-3 shadow" 
-                        style="height: 400px; width: 730px; padding-top: 0 !important;"
-                    >       
-                        <h4 
-                            class="text-center mt-5 text-brown-2 fw-semibold slide-bottom-1" 
+                    <div class="d-flex align-items-center gap-2 align-self-end">
+                        <button 
+                            type="reset"
+                            class="button-2 bg-warning text-white slide-bottom-1 align-self-start mt-3"
                         >
-                            No have product in your stock 🙉
-                        </h4>
+                            Clear
+                        </button>
+
+                        <button 
+                            type="submit" 
+                            class="button-2 bg-primary text-white slide-bottom-1 align-self-start mt-3"
+                        >
+                            Update
+                        </button>
                     </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- STOCK MANAGEMENT -->
+        <div *ngIf="showStockManage">
+            <div class="d-flex align-items-center gap-2 mb-5 mt-4 slide-bottom-1" style="margin-left: 80px;">
+                <i class="pi pi-th-large m-0 p-3 rounded-circle bg-primary text-white" style="font-size: 1.3rem;"></i>
+                <h2 class="text-brown-2 fw-semibold m-0">Stock management</h2>
+            </div>
+
+            <div class="d-flex gap-3 slide-bottom-1" style="margin-left: 80px;">                    
+                <p-button 
+                    (click)="addProd()" 
+                    icon="pi pi-plus" 
+                    styleClass="p-button-success" 
+                    label="Add product">
+                </p-button>
+            </div>
+
+            <!-- NO ITEMS IN TABLE -->
+            <div class="position-relative mt-3" style="margin-left: 80px;" *ngIf="products.length === 0 && !addProduct && !editProduct">
+                <div 
+                    class="position-absolute bg-white-1 rounded px-5 py-3 shadow" 
+                    style="height: 400px; width: 730px; padding-top: 0 !important;"
+                >       
+                    <h4 
+                        class="text-center mt-5 text-brown-2 fw-semibold slide-bottom-1" 
+                    >
+                        No have product in your stock 🙉
+                    </h4>
                 </div>
+            </div>
 
-                <!-- TABLE PRODUCT -->
-                <div class="position-relative mt-3" style="margin-left: 80px;" *ngIf="products.length > 0 && !addProduct && !editProduct">
-                    <div 
-                        class="position-absolute bg-white-1 rounded px-5 py-3 shadow" 
-                        style="height: 400px; width: 730px; overflow-y: scroll; padding-top: 0 !important;"
-                    >       
-                        <table class="table text-brown-2">
-                            <thead class="bg-white-1 stickhead py-3 px-4">
-                                <tr>
-                                    <th class="stickhead">#</th>
-                                    <th class="stickhead">Image</th>
-                                    <th class="stickhead">Name</th>
-                                    <th class="stickhead">QTY</th>
-                                    <th class="stickhead">Price</th>
-                                    <th class="stickhead">Actions</th>
-                                </tr>
-                            </thead>
+            <!-- TABLE PRODUCT -->
+            <div class="position-relative mt-3" style="margin-left: 80px;" *ngIf="products.length > 0 && !addProduct && !editProduct">
+                <div 
+                    class="position-absolute bg-white-1 rounded px-5 py-3 shadow" 
+                    style="height: 400px; width: 730px; overflow-y: scroll; padding-top: 0 !important;"
+                >       
+                    <table class="table text-brown-2">
+                        <thead class="bg-white-1 stickhead py-3 px-4">
+                            <tr>
+                                <th class="stickhead">#</th>
+                                <th class="stickhead">Image</th>
+                                <th class="stickhead">Name</th>
+                                <th class="stickhead">QTY</th>
+                                <th class="stickhead">Price</th>
+                                <th class="stickhead">Actions</th>
+                            </tr>
+                        </thead>
 
-                            <tbody>
-                                <tr *ngFor="let prod of products,index as i">
-                                    <td>{{i+1}}</td>
-                                    <td>
-                                        <img 
-                                            [src]="prod.image" 
-                                            alt="product image" 
-                                            width="75" 
-                                            height="75"
-                                            class="rounded"
-                                            style="object-fit: cover; pointer-events: none;"
-                                        />
-                                    </td>
-                                    <td>{{prod.name}}</td>
-                                    <td>{{prod.quantity}}</td>
-                                    <td>{{prod.price | number : '1.2-2'}}</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <i 
-                                                class="pi pi-pencil m-0 p-2 rounded bg-warning text-white" 
-                                                style="font-size: 0.9rem; cursor: pointer;"
-                                                (click)="openEditProd(prod._id)"
-                                            ></i>
-                                            <i 
-                                                class="pi pi-times m-0 p-2 rounded bg-danger text-white" 
-                                                style="font-size: 0.9rem; cursor: pointer;"
-                                                (click)="deleteProduct(prod._id)"
-                                            ></i>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <tbody>
+                            <tr *ngFor="let prod of products,index as i">
+                                <td>{{i+1}}</td>
+                                <td>
+                                    <img 
+                                        [src]="prod.image" 
+                                        alt="product image" 
+                                        width="75" 
+                                        height="75"
+                                        class="rounded"
+                                        style="object-fit: cover; pointer-events: none;"
+                                    />
+                                </td>
+                                <td>{{prod.name}}</td>
+                                <td>{{prod.quantity}}</td>
+                                <td>{{prod.price | number : '1.2-2'}}</td>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <i 
+                                            class="pi pi-pencil m-0 p-2 rounded bg-warning text-white" 
+                                            style="font-size: 0.9rem; cursor: pointer;"
+                                            (click)="openEditProd(prod._id)"
+                                        ></i>
+                                        <i 
+                                            class="pi pi-times m-0 p-2 rounded bg-danger text-white" 
+                                            style="font-size: 0.9rem; cursor: pointer;"
+                                            (click)="deleteProduct(prod._id)"
+                                        ></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ADD PRODUCT FORM -->
+            <div class="mt-3 position-relative" *ngIf="addProduct" style="margin-left: 80px;">
+                <form 
+                    class="form d-flex flex-column gap-3 bg-white-1 rounded px-5 py-4 shadow position-absolute"
+                    style="height: 400px; width: 730px;"
+                    [formGroup]="addProdForm"
+                    (ngSubmit)="onSubmitAddProduct()"
+                >
+                    <input
+                        formControlName="name"
+                        type="text"
+                        placeholder="product name"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
+
+                    <input
+                        formControlName="description"
+                        type="text"
+                        placeholder="description"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
+
+                    <div class="d-flex gap-2">
+                        <input
+                            formControlName="price"
+                            type="number"
+                            placeholder="price"
+                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                        />
+
+                        <input
+                            formControlName="quantity"
+                            type="number"
+                            placeholder="quantity"
+                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                        />
                     </div>
-                </div>
 
-                <!-- ADD PRODUCT FORM -->
-                <div class="mt-3 position-relative" *ngIf="addProduct" style="margin-left: 80px;">
-                    <form 
-                        class="form d-flex flex-column gap-3 bg-white-1 rounded px-5 py-4 shadow position-absolute"
-                        style="height: 400px; width: 730px;"
-                        [formGroup]="addProdForm"
-                        (ngSubmit)="onSubmitAddProduct()"
-                    >
+                    <input
+                        formControlName="image"
+                        type="text"
+                        placeholder="image"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
+
+                    <input
+                        formControlName="category"
+                        type="text"
+                        placeholder="category"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
+
+                    <div class="d-flex align-items-center gap-2 align-self-end">
+                        <button 
+                            (click)="addProd()"
+                            class="button-2 bg-warning text-white slide-bottom-1 align-self-start mt-3"
+                        >
+                            Cancel
+                        </button>
+
+                        <button 
+                            type="submit" 
+                            class="button-2 bg-primary text-white slide-bottom-1 align-self-start mt-3"
+                        >
+                            Add Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- EDIT PRODUCT FORM -->
+            <div class="mt-3 position-relative" *ngIf="editProduct" style="margin-left: 80px;">
+                <form 
+                    class="form d-flex flex-column gap-3 bg-white-1 rounded px-5 py-4 shadow position-absolute"
+                    style="height: 400px; width: 730px;"
+                    (ngSubmit)="onSubmitEditProduct()"
+                >
+                
+                    <input
+                        [(ngModel)]="productEdit.name"
+                        [ngModelOptions]="{standalone: true}"
+                        type="text"
+                        placeholder="product name"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
+
+                    <input
+                        [(ngModel)]="productEdit.description"
+                        [ngModelOptions]="{standalone: true}"
+                        type="text"
+                        placeholder="description"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
+
+                    <div class="d-flex gap-2">
                         <input
-                            formControlName="name"
-                            type="text"
-                            placeholder="product name"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
-
-                        <input
-                            formControlName="description"
-                            type="text"
-                            placeholder="description"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
-
-                        <div class="d-flex gap-2">
-                            <input
-                                formControlName="price"
-                                type="number"
-                                placeholder="price"
-                                class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                            />
-    
-                            <input
-                                formControlName="quantity"
-                                type="number"
-                                placeholder="quantity"
-                                class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                            />
-                        </div>
-
-                        <input
-                            formControlName="image"
-                            type="text"
-                            placeholder="image"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
-
-                        <input
-                            formControlName="category"
-                            type="text"
-                            placeholder="category"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
-
-                        <div class="d-flex align-items-center gap-2 align-self-end">
-                            <button 
-                                (click)="addProd()"
-                                class="button-2 bg-warning text-white slide-bottom-1 align-self-start mt-3"
-                            >
-                                Cancel
-                            </button>
-
-                            <button 
-                                type="submit" 
-                                class="button-2 bg-primary text-white slide-bottom-1 align-self-start mt-3"
-                            >
-                                Add Product
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- EDIT PRODUCT FORM -->
-                <div class="mt-3 position-relative" *ngIf="editProduct" style="margin-left: 80px;">
-                    <form 
-                        class="form d-flex flex-column gap-3 bg-white-1 rounded px-5 py-4 shadow position-absolute"
-                        style="height: 400px; width: 730px;"
-                        (ngSubmit)="onSubmitEditProduct()"
-                    >
-                    
-                        <input
-                            [(ngModel)]="productEdit.name"
+                            [(ngModel)]="productEdit.price"
                             [ngModelOptions]="{standalone: true}"
-                            type="text"
-                            placeholder="product name"
+                            type="number"
+                            placeholder="price"
                             class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
                         />
 
                         <input
-                            [(ngModel)]="productEdit.description"
+                            [(ngModel)]="productEdit.quantity"
                             [ngModelOptions]="{standalone: true}"
-                            type="text"
-                            placeholder="description"
+                            type="number"
+                            placeholder="quantity"
                             class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
                         />
+                    </div>
 
-                        <div class="d-flex gap-2">
-                            <input
-                                [(ngModel)]="productEdit.price"
-                                [ngModelOptions]="{standalone: true}"
-                                type="number"
-                                placeholder="price"
-                                class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                            />
-    
-                            <input
-                                [(ngModel)]="productEdit.quantity"
-                                [ngModelOptions]="{standalone: true}"
-                                type="number"
-                                placeholder="quantity"
-                                class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                            />
-                        </div>
+                    <input
+                        [(ngModel)]="productEdit.image"
+                        [ngModelOptions]="{standalone: true}"
+                        type="text"
+                        placeholder="image"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
 
-                        <input
-                            [(ngModel)]="productEdit.image"
-                            [ngModelOptions]="{standalone: true}"
-                            type="text"
-                            placeholder="image"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
+                    <input
+                        [(ngModel)]="productEdit.category"
+                        [ngModelOptions]="{standalone: true}"
+                        type="text"
+                        placeholder="category"
+                        class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
+                    />
 
-                        <input
-                            [(ngModel)]="productEdit.category"
-                            [ngModelOptions]="{standalone: true}"
-                            type="text"
-                            placeholder="category"
-                            class="form-control rounded-pill px-4 py-2 w-100 slide-bottom-1 text-brown-2"
-                        />
+                    <div class="d-flex align-items-center gap-2 align-self-end">
+                        <button 
+                            (click)="editProd()"
+                            class="button-2 bg-warning text-white slide-bottom-1 align-self-start mt-3"
+                        >
+                            Cancel
+                        </button>
 
-                        <div class="d-flex align-items-center gap-2 align-self-end">
-                            <button 
-                                (click)="editProd()"
-                                class="button-2 bg-warning text-white slide-bottom-1 align-self-start mt-3"
-                            >
-                                Cancel
-                            </button>
-
-                            <button 
-                                type="submit" 
-                                class="button-2 bg-primary text-white slide-bottom-1 align-self-start mt-3"
-                            >
-                                Update Product
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                        <button 
+                            type="submit" 
+                            class="button-2 bg-primary text-white slide-bottom-1 align-self-start mt-3"
+                        >
+                            Update Product
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
 
 <p-toast></p-toast>
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>

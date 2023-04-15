@@ -1,97 +1,166 @@
 <nav class="bg-grey-1">
     <div class="container d-flex align-items-center justify-content-between py-2">
-        <img class="" style="cursor: pointer;" src="../../../assets/logo-blue.svg" alt="after meow logo" width="150"
-            height="50" />
+        <img 
+            class="" 
+            style="cursor: pointer;" 
+            src="../../../assets/logo-blue.svg" 
+            alt="after meow logo" 
+            width="150"
+            height="50" 
+        />
 
-        <ul class="d-flex align-items-center m-0 gap-5">
-            <li class="list-unstyled">
-                <i class="pi pi-home" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"
-                    routerLink="/product-show">
-                </i>
-            </li>
+        <!-- SKELETON LOADING -->
+        <div class="" *ngIf="!showContent">
+            <ul class="d-flex align-items-center m-0 gap-5">
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex align-items-center m-0 gap-2" *ngIf="!userLogin && !showContent">
+            <p-skeleton width="5rem" height="2.5rem" styleClass="rounded-pill"></p-skeleton>
+            <p-skeleton width="6rem" height="2.5rem" styleClass="rounded-pill"></p-skeleton>
+        </div>
 
-            <li class="list-unstyled">
-                <i class="pi pi-heart" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
-            </li>
+        <div class="" *ngIf="showContent">
+            <ul class="d-flex align-items-center m-0 gap-5">
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/home">
+                    <h5 class="m-0 text-blue-2">Home</h5>
+                </li>
+
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/product-show">
+                    <h5 class="m-0 text-blue-2 underline-blue">Products</h5>
+                </li>
+
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/about-us">
+                    <h5 class="m-0 text-blue-2">About us</h5>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex align-items-center m-0 gap-2" *ngIf="!userLogin && showContent">
+            <button 
+                class="button-outline-blue px-4 py-2 rounded-pill"
+                routerLink="/login"
+            >
+                login
+            </button>
+
+            <button 
+                class="button-3 text-white px-4 py-2 rounded-pill bg-blue-1"
+                routerLink="/signup"
+            >
+                signup
+            </button>
+        </div>
 
 
-            <li class="list-unstyled">
-                <i class="pi pi-bell position-relative"
-                    style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
-                    <span
-                        class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
-                        style="font-family: 'Inter', sans-serif; font-size: 0.8rem;">
-                        10
-                    </span>
-                </i>
-            </li>
+        <!-- SKELETION LOADING -->
+        <div 
+            *ngIf="userLogin && !showContent"
+            class="d-flex gap-3 align-items-center" 
+        >
+            <div class="d-flex flex-column gap-2" *ngFor="let c of customer">
+                <div class="d-flex justify-content-end">
+                    <p-skeleton width="5rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+                </div>
+                
+                <div class="d-flex justify-content-end">
+                    <p-skeleton width="10rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+                </div>
+            </div>
 
-            <li class="list-unstyled">
-                <i class="pi pi-shopping-cart position-relative"
-                    style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;">
-                    <span
-                        class="badge rounded-pill text-bg-danger position-absolute top-0 start-100 translate-middle m-0 rounded-circle"
-                        style="font-family: 'Inter', sans-serif; font-size: 0.8rem;"
-                    >
-                        15
-                    </span>
-                </i>
-            </li>
+            <p-skeleton width="3rem" height="3rem" styleClass="rounded-circle"></p-skeleton>
+        </div>
 
-            <li class="list-unstyled">
-                <i class="pi pi-cog" style="color: var(--color-blue-2); cursor: pointer; font-size: 1.5rem;"></i>
-            </li>
-        </ul>
+        <div 
+            *ngIf="userLogin && showContent"
+            class="d-flex gap-3 align-items-center" 
+        >
+            <div class="d-flex flex-column" *ngFor="let c of customer">
+                <h5 class="text-end text-blue-2 mb-1">{{c.firstname}}</h5>
+                <h6 class="text-end text-brown-1">{{c.email}}</h6>
+            </div>
+
+            <img
+                *ngFor="let c of customer"
+                [src]="c.image" 
+                alt="customer profile" 
+                class="rounded-circle"
+                width="50"
+                height="50"
+                style="cursor: pointer;"
+                routerLink="/customer-profile"
+            />
+        </div>
     </div>
 </nav>
 
-<div class="container mx-auto mt-5">
+<div class="container mx-auto mt-5 position-relative">
     <button 
         class="btn mb-3 d-flex gap-3 align-items-center"
-        [routerLink]="['/product-show',]"
+        routerLink="/product-show"
+        *ngIf="!confirm"
     >
         <i class="pi pi-arrow-left"></i>
         Back
     </button>
 
-    <div class="rounded shadow p-5 d-flex gap-5" *ngFor="let p of product">
-        <img 
-            [src]="p.image"
-            width="300"
-            height="300"
-            class="rounded"
-        />
-
-        <div class="">
-            <h2>{{p.name}}</h2>
-            <h5>{{p.price | number: '1.2-2'}} บาท</h5>
-
-            <div class="mt-5 d-flex gap-4 align-items-center">
-                <button 
-                    class="btn btn-light rounded-circle p-2 d-flex align-items-center"
-                    (click)="onClickMinus()"
-                >
-                    <i class="pi pi-minus"></i>
-                </button>
-
-                <div class="h3">{{amount}}</div>
-
-                <button 
-                    class="btn btn-light rounded-circle p-2 d-flex align-items-center"
-                    (click)="onClickAdd()"
-                >
-                    <i class="pi pi-plus"></i>
-                </button>
+    <div class="" *ngIf="!confirm">
+        <div class="rounded shadow p-5 d-flex gap-5" *ngFor="let p of product">
+            <img 
+                [src]="p.image"
+                width="300"
+                height="300"
+                class="rounded"
+            />
+    
+            <div class="">
+                <h2>{{p.name}}</h2>
+                <h5>{{p.price | number: '1.2-2'}} บาท</h5>
+    
+                <div class="mt-5 d-flex gap-4 align-items-center">
+                    <button 
+                        class="btn btn-light rounded-circle p-2 d-flex align-items-center"
+                        (click)="onClickMinus()"
+                    >
+                        <i class="pi pi-minus"></i>
+                    </button>
+    
+                    <div class="h3">{{amount}}</div>
+    
+                    <button 
+                        class="btn btn-light rounded-circle p-2 d-flex align-items-center"
+                        (click)="onClickAdd()"
+                    >
+                        <i class="pi pi-plus"></i>
+                    </button>
+                </div>
+    
+                <div class="text-end">
+                    <button 
+                        class="btn btn-primary mt-5 rounded-pill"
+                        (click)="onClickConfirm()"
+                    >
+                        Confirm
+                    </button>
+                </div>
             </div>
+        </div>   
+    </div>
 
-            <div class="text-end">
-                <button 
-                    class="btn btn-primary mt-5 rounded-pill"
-                    (click)="onClickConfirm()"
-                >
-                    Confirm
-                </button>
-            </div>
-        </div>
+    <div 
+        class="position-absolute start-50 translate-middle d-flex flex-column align-items-center gap-3" 
+        style="top: 200px;"
+        *ngIf="confirm"
+    >
+        <i class="pi pi-check-circle text-success scale-up-center" style="font-size: 3rem;"></i>
+        <h4 class="text-success tracking-in-expand">Confirm order success</h4>
     </div>
 </div>

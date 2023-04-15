@@ -77,7 +77,7 @@ exports.getOrderByCustomerId = async(req, res, next) => {
 
         res.status(200).send({
             status: "success",
-            // data: items
+            data: items
         });
     } catch (err) {
         handlerError.order(err, res);
