@@ -1,0 +1,303 @@
+<nav class="bg-grey-1">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+        <img 
+            class="" 
+            style="cursor: pointer;" 
+            src="../../../assets/logo-blue.svg" 
+            alt="after meow logo" width="150"
+            height="50" 
+        />
+
+        <div class="" *ngIf="showContent">
+            <ul class="d-flex align-items-center m-0 gap-5">
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/home">
+                    <h5 class="m-0 text-blue-2">Home</h5>
+                </li>
+
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/product-show">
+                    <h5 class="m-0 text-blue-2">Products</h5>
+                </li>
+
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/about-us">
+                    <h5 class="m-0 text-blue-2">About us</h5>
+                </li>
+            </ul>
+        </div>
+
+        <div class="" *ngIf="!showContent">
+            <ul class="d-flex align-items-center m-0 gap-5">
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+            </ul>
+        </div>
+
+        <div 
+            *ngIf="!showContent"
+            class="d-flex gap-3 align-items-center" 
+        >
+            <div class="d-flex flex-column gap-2" *ngFor="let c of customer">
+                <div class="d-flex justify-content-end">
+                    <p-skeleton width="5rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+                </div>
+                
+                <div class="d-flex justify-content-end">
+                    <p-skeleton width="10rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+                </div>
+            </div>
+
+            <p-skeleton width="3rem" height="3rem" styleClass="rounded-circle"></p-skeleton>
+        </div>
+
+        <div 
+            *ngIf="showContent"
+            class="d-flex gap-3 align-items-center" 
+        >
+            <div class="d-flex flex-column" *ngFor="let c of customer">
+                <h5 class="text-end text-blue-2 mb-1">{{c.firstname}}</h5>
+                <h6 class="text-end text-brown-1">{{c.email}}</h6>
+            </div>
+
+            <img
+                *ngFor="let c of customer"
+                [src]="c.image" 
+                alt="customer profile" 
+                class="rounded-circle"
+                width="50"
+                height="50"
+                style="cursor: pointer; object-fit: cover;"
+                (click)="onClickProfile()"
+            />
+        </div>
+    </div>
+</nav>
+
+<div class="container mx-auto">
+    <div class="shadow rounded mt-5 p-0 row"
+        *ngIf="!showContent" style="height: 700px;">
+        <div class="col-3 bg-grey-4 m-0 rounded-start-2 px-5" *ngFor="let cust of customer">
+            <div class="d-flex flex-column gap-5 align-items-center">
+                <p-skeleton shape="circle" size="9rem" class="mt-5"></p-skeleton>
+    
+                <div class="w-100 d-flex flex-column gap-4">
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
+                </div>
+            </div>
+    
+            <div class="d-flex justify-content-end flex-column" style="height: 210px">
+                <p-skeleton height="2rem" styleClass="mb-2 py-4" borderRadius="100px"></p-skeleton>
+            </div>
+        </div>
+    
+        <div class="col bg-grey-5 rounded-end-2 p-5" *ngFor="let cust of customer">
+            <p-skeleton width="32rem" height="1.5rem" styleClass="mb-5 rounded-pill"></p-skeleton>
+    
+            <div class="d-flex flex-column gap-5" style="color: var(--color-grey-6);">
+                <p-skeleton width="8rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+                <p-skeleton width="8rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+                <p-skeleton width="8rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+            </div>
+        </div>
+    </div>
+    
+    <div 
+        class="shadow rounded mt-5 p-0 row slide-bottom-1"
+        *ngIf="showContent" style="height: 700px;"
+    >
+        <div class="col-3 bg-grey-4 m-0 rounded-start-2 px-5" *ngFor="let cust of customer">
+            <div class="d-flex flex-column gap-5 align-items-center">
+                <img 
+                    [src]="cust.image" alt="customer avatar" 
+                    class="rounded-circle mt-5 slide-bottom-1" 
+                    width="150"
+                    height="150" 
+                    style="pointer-events: none; object-fit: cover;" 
+                />
+    
+                <div class="w-100 d-flex flex-column gap-4 slide-bottom-1">
+                    <button
+                        class="button-2 {{ showEdit ? 'bg-warning' : 'button-bg-blue-1'}} text-white fw-semibold w-100 slide-bottom-1"
+                        (click)="onClickEdit()">
+                        {{showEdit ? 'Cancel' : 'Edit Profile'}}
+                    </button>
+    
+    
+                    <button 
+                        class="button-2 {{showOrder ? 'bg-warning' : 'button-bg-blue-1'}} button-bg-blue-1 text-white fw-semibold w-100 slide-bottom-1"
+                        (click)="onClickOrderHist()"
+                    >
+                        {{showOrder ? 'Cancel' : 'Order history'}}
+                    </button>
+    
+                    <button class="button-2 button-bg-blue-1 text-white fw-semibold w-100 slide-bottom-1"
+                        routerLink="/seller-profile">
+                        Seller Profile
+                    </button>
+                </div>
+            </div>
+    
+            <div class="d-flex justify-content-end flex-column slide-bottom-1" style="height: 210px">
+                <button class="button-2 button-bg-red-1 text-white fw-semibold w-100 align-self-end slide-bottom-1"
+                    (click)="onClickLogout()">
+                    Logout
+                </button>
+            </div>
+        </div>
+    
+        <div class="col bg-grey-5 m-0 rounded-end-2 p-5" *ngFor="let cust of customer">
+            <div class="" *ngIf="!showEdit && !showOrder">
+                <h1 class="fw-medium mb-5 slide-bottom-1"
+                    style="color: var(--color-grey-6); font-size: 4rem; letter-spacing: 1.5;">
+                    {{cust.firstname | uppercase}} {{cust.lastname | uppercase}}
+                </h1>
+    
+                <div class="d-flex flex-column gap-4 slide-bottom-1" style="color: var(--color-grey-6);">
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="pi pi-user" style="font-size: 1.5rem;"></i>
+                        <h4 class="m-0">{{cust.email}}</h4>
+                    </div>
+    
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="pi pi-phone" style="font-size: 1.5rem;"></i>
+                        <h4 class="m-0">{{cust.phone}}</h4>
+                    </div>
+    
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="pi pi-calendar" style="font-size: 1.5rem;"></i>
+                        <h4 class="m-0">{{cust.dob | date:'yyyy-MM-dd' }}</h4>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="slide-bottom-1" *ngIf="showEdit">
+                <h1 class="fw-medium mb-5 slide-bottom-1"
+                    style="color: var(--color-grey-6); font-size: 4rem; letter-spacing: 1.5;">
+                    Edit Profile
+                </h1>
+    
+                <form class="d-flex flex-column gap-3 slide-bottom-1" *ngFor="let cust of customer"
+                    (ngSubmit)="onSubmitEdit()">
+    
+                    <input 
+                        type="text" 
+                        class="input-signup form-control rounded-pill w-50" 
+                        [(ngModel)]="cust.firstname"
+                        [ngModelOptions]="{standalone: true}" 
+                        placeholder="firstname" 
+                        required 
+                    />
+                    
+                    <input 
+                        type="text" 
+                        class="input-signup form-control rounded-pill w-50" 
+                        [(ngModel)]="cust.lastname"
+                        [ngModelOptions]="{standalone: true}" 
+                        placeholder="lastname" required 
+                    />
+    
+                    <input 
+                        type="text" 
+                        class="input-signup form-control rounded-pill w-50 mb-3" 
+                        [(ngModel)]="cust.phone"
+                        [ngModelOptions]="{standalone: true}" 
+                        placeholder="phone" 
+                        required 
+                    />
+    
+                    <button 
+                        class="button-3 rounded-pill py-2 button-bg-green-1 button-text-white-1 align-self-start w-25" type="sumbit"
+                    >
+                        Confirm
+                    </button>
+                </form>
+            </div>
+
+            <div class="slide-bottom-1" *ngIf="showOrder">
+                <h1 
+                    class="fw-medium mb-5"
+                    style="color: var(--color-grey-6); font-size: 4rem; letter-spacing: 1.5;"
+                >
+                    Order history
+                </h1>
+
+                <div class="bg-light rounded px-5" style="overflow-y: scroll; height: 500px;">
+                    <table class="table text-brown-2 bg-light">
+                        <thead class="bg-light stickhead py-3 px-4">
+                            <tr>
+                                <th>#</th>
+                                <th>image</th>
+                                <th>name</th>
+                                <th>order date</th>
+                                <th>total price</th>
+                                <th>qty</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody class="" style="overflow-y: scroll;">
+                            <tr *ngFor="let o of orders, index as i">
+                                <td>{{i+1}}</td>
+
+                                <td *ngFor="let itm of o.items">
+                                    <img 
+                                        [src]="itm.image"
+                                        width="50"
+                                        height="50"
+                                        style="object-fit: cover;"
+                                        class="rounded"
+                                    />
+                                </td>
+
+                                
+                                <td *ngFor="let itm of o.items">
+                                    <p>{{itm.name}}</p>
+                                </td>
+                                
+                                <td>{{o.order_date | date: 'dd/MM/yyyy'}}</td>
+
+                                <td *ngFor="let itm of o.items">
+                                    <p>{{itm.price | number: '1.2-2'}}</p>
+                                </td>
+
+                                <td *ngFor="let itm of o.items">
+                                    <p>{{itm.quantity}}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div 
+        class="position-absolute p-3 shadow rounded d-flex flex-column bg-light slide-bottom-1" 
+        *ngIf="showProfileConfig"
+        style="right: 13%; width: 15rem; top: 8%;"
+    >
+        <div 
+            class="d-flex gap-3 align-items-center mb-3"
+            (click)="onClickEdit()"
+        >
+            <i class="pi pi-pencil text-brown-1"></i>
+            <h6 class="text-brown-1 m-0" style="cursor: pointer;">edit profile</h6>
+        </div>
+    
+        <div 
+            class="d-flex gap-3 align-items-center"
+            (click)="onClickLogout()"
+        >
+            <i class="pi pi-arrow-left text-danger"></i>
+            <h6 class="text-danger m-0" style="cursor: pointer;">logout</h6>
+        </div>
+    </div>
+</div>
+
+<p-toast></p-toast>

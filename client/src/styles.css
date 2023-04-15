@@ -1,1 +1,315 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+:root {
+    --color-white-1: #fff;
+    --color-green-1: #98AE9B;
+    --color-grey-1: #B0B0B0;
+    --color-blue-1: #1C488B;
+    --color-red-1: #991E16;
+    --color-brown-1: #A59A8C;
+    --color-pink-1: #F2BDBD;
+
+    --color-green-2: #F2FDF1;
+    --color-grey-2: #333;
+    --color-blue-2: #104373;
+    --color-brown-2: #48433D;
+    --color-pink-2: #EECED4;
+
+    --color-grey-3: #D9D9D9;
+    --color-brown-3: #524A4A;
+
+    --color-grey-4: #EDEDED;
+
+    --color-grey-5: #EDE9E1;
+
+    --color-grey-6: #6E6868;
+}
+
+body {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* ---BUTTON--- */
+.button {
+    border: none;
+    border-radius: 100px;
+    padding: 0.8rem 0.1rem;
+}
+
+.button-2 {
+    border: none;
+    border-radius: 100px;
+    padding: 0.8rem 2rem;
+}
+
+.button-3 {
+    border: none;
+}
+
+.button-outline-blue {
+    border: 1px solid var(--color-blue-1);
+    background-color: transparent;
+    color: var(--color-blue-1);
+}
+
+.button-text-white-1 {
+    color: var(--color-white-1);
+    font-size: 1.2rem;
+}
+
+.button-bg-green-1 {
+    background-color: var(--color-green-1);
+}
+
+.button-bg-blue-1 {
+    background-color: var(--color-blue-1);
+}
+
+.button-bg-red-1 {
+    background-color: var(--color-red-1);
+}
+
+/* ---LINK--- */
+.underline-blue {
+    color: var(--color-blue-1);
+    text-decoration: underline;
+    text-decoration-color: var(--color-blue-1);
+}
+
+/* ---INPUT--- */
+.input-signup {
+    font-size: 1.2rem;
+    font-weight: 500 !important;
+    color: var(--color-grey-1) !important;
+    background-color: var(--color-green-2);
+}
+
+.input-signup::placeholder {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    color: var(--color-grey-1) !important;
+}
+
+[type="date"] {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    color: var(--color-grey-1) !important;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+/* ---TEXT COLOR--- */
+.text-grey-1 {
+    color: var(--color-grey-1) !important;
+}
+
+.text-brown-1 {
+    color: var(--color-brown-1) !important;
+}
+
+.text-pink-1 {
+    color: var(--color-pink-1) !important;
+}
+
+.text-brown-2 {
+    color: var(--color-brown-2) !important;
+}
+
+.text-blue-2 {
+    color: var(--color-blue-2) !important;
+}
+
+.text-pink-2 {
+    color: var(--color-pink-2) !important;
+}
+
+.text-brown-3 {
+    color: var(--color-brown-3) !important;
+}
+
+.text-grey-3 {
+    color: var(--color-grey-3) !important;
+}
+
+/* ---GRADIENT--- */
+.text-grandient {
+    background: #E6DE00;
+    background: linear-gradient(to top right, #E6DE00 27%, #F51ECA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-grandient-2 {
+    background: #00CF29;
+    background: linear-gradient(to bottom left, #00CF29 0%, #00C1CF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    
+}
+
+
+/* ---BACKGROUND-COLOR--- */
+.bg-white-1 {
+    background-color: var(--color-white-1);
+}
+
+.bg-blue-1 {
+    background-color: var(--color-blue-1);
+}
+
+.bg-grey-1 {
+    background-color: var(--color-grey-3);
+}
+
+.bg-brown-1 {
+    background-color: var(--color-brown-1);
+}
+
+.bg-pink-1 {
+    background-color: var(--color-pink-1);
+}
+
+.bg-brown-2 {
+    background-color: var(--color-brown-2);
+}
+
+.bg-pink-2 {
+    background-color: var(--color-pink-2);
+}
+
+.bg-grey-4 {
+    background-color: var(--color-grey-4);
+}
+
+.bg-grey-5 {
+    background-color: var(--color-grey-5);
+}
+
+.bg-gradient-card-1 {
+    background: linear-gradient(177.7deg, #C5D7C6 19.79%, rgba(197, 215, 198, 0) 69.86%);
+}
+
+.bg-gradient-1 {
+    background-image: linear-gradient(to left top, #f5efd1, #f5efd1, #cee8d9, #c5e1de, #c3d9de, #bfd4dc, #bccfda, #bac9d7, #b2c5d7, #a9c1d8, #a1bcd8, #99b8d9);
+}
+
+.bg-gradient-2 {
+    background-image: linear-gradient(to left top, #F4D8BF, #ECD4C2, #ECD4C2, #C4BED2, #C4BED2);
+}
+
+/* --TABLE-- */
+.stickhead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* ---ANIMATE--- */
+.slide-bottom-1 {
+    -webkit-animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-bottom-2 {
+    -webkit-animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+    animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+}
+
+.slide-bottom-3 {
+    -webkit-animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.1s both;
+    animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
+}
+
+.slide-in-bottom {
+    -webkit-animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-in-fwd-center {
+    -webkit-animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes slide-in-bottom {
+    0% {
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-bottom {
+    0% {
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slide-in-fwd-center {
+    0% {
+        -webkit-transform: translateZ(-1400px);
+        transform: translateZ(-1400px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-fwd-center {
+    0% {
+        -webkit-transform: translateZ(-1400px);
+        transform: translateZ(-1400px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}

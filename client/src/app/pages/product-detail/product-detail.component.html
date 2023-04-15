@@ -1,0 +1,191 @@
+<nav class="bg-grey-1">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+        <img 
+            class="" 
+            style="cursor: pointer;" 
+            src="../../../assets/logo-blue.svg" 
+            alt="after meow logo" 
+            width="150"
+            height="50" 
+        />
+
+        <!-- SKELETON LOADING -->
+        <div class="" *ngIf="!showContent">
+            <ul class="d-flex align-items-center m-0 gap-5">
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+                <li class="list-unstyled">
+                    <p-skeleton width="5rem" height="1rem"></p-skeleton>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex align-items-center m-0 gap-2" *ngIf="!userLogin && !showContent">
+            <p-skeleton width="5rem" height="2.5rem" styleClass="rounded-pill"></p-skeleton>
+            <p-skeleton width="6rem" height="2.5rem" styleClass="rounded-pill"></p-skeleton>
+        </div>
+
+        <div class="" *ngIf="showContent">
+            <ul class="d-flex align-items-center m-0 gap-5">
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/home">
+                    <h5 class="m-0 text-blue-2">Home</h5>
+                </li>
+
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/product-show">
+                    <h5 class="m-0 text-blue-2 underline-blue">Products</h5>
+                </li>
+
+                <li class="list-unstyled" style="cursor: pointer;" routerLink="/about-us">
+                    <h5 class="m-0 text-blue-2">About us</h5>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex align-items-center m-0 gap-2" *ngIf="!userLogin && showContent">
+            <button 
+                class="button-outline-blue px-4 py-2 rounded-pill"
+                routerLink="/login"
+            >
+                login
+            </button>
+
+            <button 
+                class="button-3 text-white px-4 py-2 rounded-pill bg-blue-1"
+                routerLink="/signup"
+            >
+                signup
+            </button>
+        </div>
+
+
+        <!-- SKELETION LOADING -->
+        <div 
+            *ngIf="userLogin && !showContent"
+            class="d-flex gap-3 align-items-center" 
+        >
+            <div class="d-flex flex-column gap-2" *ngFor="let c of customer">
+                <div class="d-flex justify-content-end">
+                    <p-skeleton width="5rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+                </div>
+                
+                <div class="d-flex justify-content-end">
+                    <p-skeleton width="10rem" height="1rem" styleClass="rounded-pill"></p-skeleton>
+                </div>
+            </div>
+
+            <p-skeleton width="3rem" height="3rem" styleClass="rounded-circle"></p-skeleton>
+        </div>
+
+        <div 
+            *ngIf="userLogin && showContent"
+            class="d-flex gap-3 align-items-center" 
+        >
+            <div class="d-flex flex-column" *ngFor="let c of customer">
+                <h5 class="text-end text-blue-2 mb-1">{{c.firstname}}</h5>
+                <h6 class="text-end text-brown-1">{{c.email}}</h6>
+            </div>
+
+            <img
+                *ngFor="let c of customer"
+                [src]="c.image" 
+                alt="customer profile" 
+                class="rounded-circle"
+                width="50"
+                height="50"
+                style="cursor: pointer;"
+                routerLink="/customer-profile"
+            />
+        </div>
+    </div>
+</nav>
+
+<div class="container mx-auto mt-5" *ngIf="!showContent">
+    <p-skeleton width="5rem" height="2rem" styleClass="rounded-pill mb-3"></p-skeleton>
+
+    <div class="row rounded shadow" style="height: 700px;">
+        <div class="col-5 rounded-start-2 p-0" *ngFor="let p of product" style="background-color: #D5E1EF;">
+            <div class="card" style="border: none;">
+                <p-skeleton  height="30rem" styleClass="w-100"></p-skeleton>
+            </div>
+        </div>
+
+        <div class="col-7 p-5 rounded-end-2" *ngFor="let p of product" style="background-color: #EDEDED;">
+            <div class="d-flex flex-column">
+                <p-skeleton width="32rem" height="2rem" styleClass="rounded-pill mb-3"></p-skeleton>
+                
+                <div class="mt-4">
+                    <p-skeleton width="15rem" height="1rem" styleClass="rounded-pill mb-5"></p-skeleton>
+                    <p-skeleton width="15rem" height="1rem" styleClass="rounded-pill mb-5"></p-skeleton>
+                    <p-skeleton width="15rem" height="1rem" styleClass="rounded-pill mb-5"></p-skeleton>
+                </div>
+    
+                <div class="text-end align-self-end">
+                    <p-skeleton width="6rem" height="2.5rem" styleClass="rounded-pill"></p-skeleton>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mx-auto mt-5 slide-bottom-1" *ngIf="showContent && !showToLogin">
+    <button 
+        class="btn mb-3 d-flex gap-3 align-items-center"
+        (click)="onClickBack()"
+    >
+        <i class="pi pi-arrow-left"></i>
+        Back
+    </button>
+
+    <div class="row rounded shadow" style="height: 700px;">
+        <div class="col-5 rounded-start-2 p-0" *ngFor="let p of product" style="background-color: #D5E1EF;">
+            <div class="card" style="border: none;">
+                <img 
+                    [src]="p.image"
+                    height="500"
+                    style="object-fit: cover;"
+                    class="w-100 card-img-top"
+                />
+            </div>
+        </div>
+
+        <div class="col-7 p-5 rounded-end-2" *ngFor="let p of product" style="background-color: #EDEDED;">
+            <div class="d-flex flex-column">
+                <h2>{{p.name}}</h2>
+                
+                <div class="mt-4">
+                    <p>รายละเอียด<br /> <span class="h5">{{p.description}}</span></p>
+                    <p>ราคา <br /> <span class="h5">{{p.price | number:'1.2-2'}}</span></p>
+                    <p>สินค้าในคลัง <br /> <span class="h5">{{p.quantity}}</span></p>
+                </div>
+    
+                <div class="text-end align-self-end">
+                    <button 
+                        class="btn btn-success rounded-pill text-white"
+                        (click)="onClickCart()"
+                    >
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mx-auto mt-5 slide-bottom-1 position-relative" *ngIf="showToLogin">
+    <div 
+    class="position-absolute start-50 translate-middle d-flex flex-column align-items-center gap-3" 
+    style="top: 200px;"
+    >
+    <div class="d-flex gap-3 mb-3">
+        <i class="pi pi-circle-fill text-primary pulsate-bck" style="font-size: 1.5rem;"></i>
+        <i class="pi pi-circle-fill text-primary pulsate-bck" style="font-size: 1.5rem;"></i>
+        <i class="pi pi-circle-fill text-primary pulsate-bck" style="font-size: 1.5rem;"></i>
+    </div>
+
+    <h4 class="text-brown-2 tracking-in-expand mb-1">Please login for buy our product 🐶</h4>
+    <h6 class="text-brown-2 tracking-in-expand">You are being redirected to the login page.</h6>
+</div>
+</div>

@@ -1,0 +1,74 @@
+<div class="bg-brown-1 w-100 vh-100 position-relative">
+    <div class="position-absolute top-50 start-50 translate-middle" *ngIf="showLoad">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+
+    <div 
+    class="position-absolute d-flex gap-2 slide-bottom-1"
+    style="left: 50px; top: 50px; cursor: pointer;"
+    (click)="onClickBack()"
+    *ngIf="!showLoad"
+    >
+        <i class="pi pi-arrow-left m-0 p-0" style="font-size: 2rem; color: var(--color-white-1);"></i>
+        <h3 clas="m-0 p-0" style="color: var(--color-white-1);">Back</h3>
+    </div>
+
+    <div 
+        class="position-absolute top-50 start-50 translate-middle d-flex flex-column align-items-center slide-bottom-1"
+        *ngIf="!showLoad"
+    >
+        <img 
+            class="slide-bottom-1 mb-5" 
+            src="../../../assets/logo-seller-white.svg" 
+            alt="after meow seller logo" 
+            width="250" 
+            height="100"
+        />
+
+        <form 
+            class="form d-flex flex-column gap-3 justify-content-center align-items-center"
+            style="width: 32rem;"
+            [formGroup]="signupForm"
+            (ngSubmit)="onSubmit()"
+        >
+            <input
+                formControlName="store_name"
+                type="text"
+                placeholder="shope name"
+                class="form-control rounded-pill px-4 py-2 w-75 slide-bottom-1"
+            />
+            <input
+                formControlName="store_email"
+                type="email"
+                placeholder="email"
+                class="form-control rounded-pill px-4 py-2 w-75 slide-bottom-1"
+            />
+            <input
+                formControlName="store_image"
+                type="text"
+                placeholder="image"
+                class="form-control rounded-pill px-4 py-2 w-75 slide-bottom-1"
+            />
+            <input
+                formControlName="store_phone"
+                type="text"
+                placeholder="phone"
+                class="input-sigup form-control rounded-pill px-4 py-2 w-75 slide-bottom-1"
+            />
+
+            <button class="button button-text-white-1 rounded-pill w-50 mt-5 bg-brown-2 fw-semibold position-relative slide-bottom-1" >
+                Submit
+                <img 
+                    src="../../../assets/cat.png" 
+                    class="position-absolute translate-middle"
+                    style="top: -25px; right: -20px;"
+                    alt="cat"
+                    width="100"
+                    height="80"
+                />
+            </button>
+        </form>
+    </div>
+</div>
+
+<p-toast></p-toast>
